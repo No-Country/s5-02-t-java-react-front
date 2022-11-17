@@ -1,7 +1,8 @@
 import './App.css';
 import RoutesApp from 'routes/RoutesApp';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App () {
+function App() {
   return (
     <RoutesApp />
   )
