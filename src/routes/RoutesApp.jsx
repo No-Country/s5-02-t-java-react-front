@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 // import { ProtectedRoute } from './ProtectedRoute'
 import NotFound from 'pages/notFound/NotFound'
-import Navbar from 'components/navbar/Navbar'
+import Home from 'pages/home/Home'
 
 //Aqui iran todas las rutas
 function RoutesApp() {
@@ -12,7 +12,7 @@ function RoutesApp() {
       => aqui las rutas protegidas
       */}
 
-      <Route path="/" element={<Navbar />}>
+      <Route path="/" element={<Home />}>
         {/* hijos del navbar => todas las paginas */}
       </Route>
       <Route path="*" element={<NotFound />} />
