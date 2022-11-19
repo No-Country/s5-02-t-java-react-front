@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 // import { ProtectedRoute } from './ProtectedRoute'
 import NotFound from 'pages/notFound/NotFound'
+import Register from '../components/register/Register';
 
 //Aqui iran todas las rutas
 function RoutesApp() {
@@ -10,10 +11,10 @@ function RoutesApp() {
       </Route> 
       => aqui las rutas protegidas
       */}
-
       <Route path="/" element={<h1>navbar</h1>}>
         {/* hijos del navbar => todas las paginas */}
       </Route>
+      <Route path="/register" element={<Register />} />   
       <Route path="*" element={<NotFound />} />
     </Routes>
   )
