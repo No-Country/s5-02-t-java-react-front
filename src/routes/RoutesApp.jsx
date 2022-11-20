@@ -11,7 +11,7 @@ function RoutesApp() {
       </Route> 
       => aqui las rutas protegidas
       */}
-      <Route path="/" element={<h1>navbar</h1>}>
+      <Route path="/" element={<Home />}>
         {/* hijos del navbar => todas las paginas */}
       </Route>
       <Route path="/register" element={<Register />} />   
