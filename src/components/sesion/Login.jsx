@@ -34,6 +34,10 @@ export default function Login() {
 
   return (
     <Card style={{ width: '19rem' }} className="p-2 shadow">
+      <Card.Title>
+        <h2 className="text-center">Ingresá para realizar tu reserva</h2>
+      </Card.Title>
+      <Card.Body>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control type="email" placeholder="Email" />
@@ -69,6 +73,7 @@ export default function Login() {
           </Button>
         </div>
       </Form>
+      </Card.Body>
     </Card>
   )
 }
