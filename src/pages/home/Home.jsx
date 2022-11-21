@@ -31,6 +31,11 @@ const Home = () => {
   return (
     <div>
       <Navbar />
+      <h1>Add Componnets at page home</h1>
+      <h3>filters</h3>
+      <h3>search</h3>
+      <h3>order</h3>
+      <h3>paginate</h3>
 
       {userInfo && (
         <>
@@ -40,7 +45,11 @@ const Home = () => {
               src={userInfo.reloadUserInfo.photoUrl}
               alt={userInfo.email}
             ></img>
-          )) || <h1>{userInfo.email[0].toUpperCase()}</h1>}
+          )) || (
+            <h1 className="fw-bold text-primary">
+              {userInfo.email.substr(0, 2).toUpperCase()}
+            </h1>
+          )}
         </>
       )}
 
