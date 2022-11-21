@@ -1,14 +1,18 @@
-import { useAuth0 } from '@auth0/auth0-react'
+import { signOut } from 'firebase/auth'
+import { auth } from 'firebaseConfig'
+import { useNavigate } from 'react-router-dom'
 
 export default function Logout() {
-  const { logout } = useAuth0()
+  const navigate = useNavigate()
 
-  return (
-    <button
-      className="flex items-center justify-center content-center w-full px-12 py-3 text-sm font-medium shadow text-w-600 sm:w-auto hover:scale-110 hover:shadow-md hover:shadow-current focus:outline-none focus:ring mr-2  bg-rosadito-500 text-white"
-      onClick={() => logout({ returnTo: window.location.origin })}
-    >
-      Logout
-    </button>
-  )
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth)
+      navigate('/')
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  return <button onClick={handleSignOut}>Logout</button>
 }

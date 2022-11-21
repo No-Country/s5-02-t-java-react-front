@@ -8,7 +8,7 @@ import {
   deleteById,
   getByNickname,
   updatePerfil,
-} from 'features/actions/usuarios'
+} from 'features/actions/usuariosActions'
 
 // estado inicial
 const initialState = {

@@ -3,7 +3,6 @@ import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
-import './navbar.css'
 
 // LOGO
 import logo from '../../assets/img/logo.jpg'
@@ -42,11 +41,11 @@ function NavBar() {
                   <Nav.Link href="#Contacto" active>
                     Contacto
                   </Nav.Link>
-                  <Nav.Link href="#Acceder" active>
+                  <Nav.Link href="/login" active>
                     Acceder
                   </Nav.Link>
                   <Nav.Link
-                    href="#Registrarse"
+                    href="/register"
                     style={{ color: 'var(--bs-blue)' }}
                   >
                     Registrarse

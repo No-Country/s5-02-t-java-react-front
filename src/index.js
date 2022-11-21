@@ -12,17 +12,17 @@ const root = createRoot(container)
 root.render(
   <Provider store={store}>
     {/* se pasan las variables de entorno de auth0 */}
-    <Auth0Provider
+    {/* <Auth0Provider
       domain={process.env.REACT_APP_AUTH_DOMAIN}
       clientId={process.env.REACT_APP_AUTH_CLIENT_ID}
       audience={process.env.REACT_APP_AUTH_AUDIENCE}
       redirectUri={window.location.origin}
       scope="openid profile email"
-    >
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Auth0Provider>
+    > */}
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+    {/* </Auth0Provider> */}
   </Provider>
 )
 
