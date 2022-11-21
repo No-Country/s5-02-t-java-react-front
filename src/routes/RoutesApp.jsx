@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import NotFound from 'pages/notFound/NotFound'
 import Home from 'pages/home/Home'
 import Register from '../components/register/Register'
+import Login from 'components/sesion/Login'
 
 //Aqui iran todas las rutas
 function RoutesApp() {
@@ -17,6 +18,7 @@ function RoutesApp() {
         {/* hijos del navbar => todas las paginas */}
       </Route>
       <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   )

@@ -6,7 +6,7 @@ import { RiInstagramLine } from 'react-icons/ri'
 const Footer = () => {
   return (
     <div>
-      <footer className="text-white py-4 mt-5 fixed-bottom bg-dark">
+      <footer className="text-white py-4 mt-5 mb-0 bg-dark">
         <div className="container d-flex  mb-4">
           <ul className="col-12 col-md-3 me-auto mt-3 list-unstyled">
             <li className="text-start">
