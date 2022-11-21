@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Footer from 'components/footer/Footer'
 import Navbar from 'components/navbar/Navbar'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'firebaseConfig'
+import { auth } from 'config/firebase'
 import Logout from 'components/sesion/Logout'
 import Cardhouse from 'components/cardhouse/Cardhouse'
+import { Container } from 'react-bootstrap'
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState()
@@ -40,11 +41,15 @@ const Home = () => {
               alt={userInfo.email}
             ></img>
           )) || <h1>{userInfo.email[0].toUpperCase()}</h1>}
-
-          <Logout />
         </>
       )}
-      <Cardhouse />
+
+      <Container className="d-flex flex-row flex-wrap align-items-center justify-content-around align-content-center">
+        {Array.from({ length: 6 }).map((card) => (
+          <Cardhouse />
+        ))}
+      </Container>
+
       <Footer />
     </div>
   )

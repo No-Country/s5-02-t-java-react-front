@@ -6,7 +6,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
 } from 'firebase/auth'
-import { auth } from 'firebaseConfig'
+import { auth } from 'config/firebase'
 
 import { Card } from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'

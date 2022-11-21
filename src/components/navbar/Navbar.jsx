@@ -1,4 +1,7 @@
-import React from 'react'
+import Logout from 'components/sesion/Logout'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from 'config/firebase'
+import React, { useEffect, useState } from 'react'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
@@ -8,6 +11,26 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 import logo from '../../assets/img/logo.jpg'
 
 function NavBar() {
+  const [userInfo, setUserInfo] = useState(null)
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        // const uid = user.uid
+        console.log(user)
+        setUserInfo(user)
+        // ...
+      } else {
+        console.log('user deslogeado')
+        setUserInfo(null)
+        // User is signed out
+        // ...
+      }
+    })
+  }, [userInfo])
+
   return (
     <>
       {['xl'].map((expand) => (
@@ -41,15 +64,22 @@ function NavBar() {
                   <Nav.Link href="#Contacto" active>
                     Contacto
                   </Nav.Link>
-                  <Nav.Link href="/login" active>
-                    Acceder
-                  </Nav.Link>
-                  <Nav.Link
-                    href="/register"
-                    style={{ color: 'var(--bs-blue)' }}
-                  >
-                    Registrarse
-                  </Nav.Link>
+
+                  {userInfo === null ? (
+                    <>
+                      <Nav.Link href="/login" active>
+                        Acceder
+                      </Nav.Link>
+                      <Nav.Link
+                        href="/register"
+                        style={{ color: 'var(--bs-blue)' }}
+                      >
+                        Registrarse
+                      </Nav.Link>
+                    </>
+                  ) : (
+                    <Logout />
+                  )}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

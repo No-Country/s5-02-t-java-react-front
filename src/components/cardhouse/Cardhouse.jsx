@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card'
 
 function Cardhouse() {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className="m-4">
       <Card.Img
         variant="top"
         src="https://www.conclusion.com.ar/wp-content/uploads/2020/07/Salon.jpg"
