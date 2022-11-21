@@ -4,6 +4,7 @@ import Navbar from 'components/navbar/Navbar'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'firebaseConfig'
 import Logout from 'components/sesion/Logout'
+import Cardhouse from 'components/cardhouse/Cardhouse'
 
 const Home = () => {
   const [userInfo, setUserInfo] = useState()
@@ -43,6 +44,7 @@ const Home = () => {
           <Logout />
         </>
       )}
+      <Cardhouse />
       <Footer />
     </div>
   )
