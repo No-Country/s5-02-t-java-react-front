@@ -2,21 +2,32 @@ import Card from 'react-bootstrap/Card'
 
 function Cardhouse() {
   return (
-    <Card style={{ width: '18rem' }} className="m-4">
+    <Card
+      style={{
+        width: '18rem',
+        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px',
+        border: 'none',
+      }}
+      className="m-4"
+    >
       <Card.Img
         variant="top"
         src="https://www.conclusion.com.ar/wp-content/uploads/2020/07/Salon.jpg"
       />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>Salon</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Salon ubicado en... <br></br>
+          Con capacidad de...
         </Card.Text>
       </Card.Body>
       <Card.Body>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        <Card.Link
+          className="text-decoration-none fw-bolder text-warning"
+          href="#"
+        >
+          Ver mas
+        </Card.Link>
       </Card.Body>
     </Card>
   )
