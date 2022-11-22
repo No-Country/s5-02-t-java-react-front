@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Footer from 'components/footer/Footer'
-import Navbar from 'components/navbar/Navbar'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from 'config/firebase'
-import Logout from 'components/sesion/Logout'
 import Cardhouse from 'components/cardhouse/Cardhouse'
 import { Container } from 'react-bootstrap'
 import Filter from 'components/filter/Filter'
@@ -34,7 +32,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
       <Container className="d-flex flex-row flex-wrap align-items-center align-content-center justify-content-center">
         <h1>Add Componnets at page home</h1>
         <Search />
