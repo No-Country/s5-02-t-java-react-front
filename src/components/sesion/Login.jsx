@@ -80,7 +80,7 @@ export default function Login() {
   // }, [isLoading, isLoadingGoogle, loginWithRedirect])
 
   return (
-    <Card style={{ width: '19rem' }} className="p-2 shadow">
+    <Card className="p-2 border-0 flex-fill ms-5 me-5 align-middle">
       <Card.Title>
         <h2 className="text-center">Ingresá para realizar tu reserva</h2>
       </Card.Title>
@@ -88,17 +88,16 @@ export default function Login() {
         <Form>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
+              className="shadow-sm p-3 bg-white rounded border-0"
               type="email"
               placeholder="Email"
               name="email"
               onChange={handleUser}
             />
-            <Form.Text className="text-muted">
-              Nunca compartiremos su correo electrónico con nadie más.
-            </Form.Text>
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Control
+              className="shadow-sm p-3 bg-white rounded border-0"
               type="password"
               placeholder="Contraseña"
               name="password"
@@ -112,7 +111,7 @@ export default function Login() {
             <Button
               variant="dark"
               type="submit"
-              className=""
+              className="p-3"
               disabled={isLoading}
               name="correo"
               onClick={handleSubmit}
@@ -122,7 +121,7 @@ export default function Login() {
             <Button
               variant="outline-primary"
               type="submit"
-              className=""
+              className="p-3"
               disabled={isLoadingGoogle}
               name="google"
               onClick={handleSubmit}

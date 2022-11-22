@@ -9,6 +9,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 
 // LOGO
 import logo from '../../assets/img/logo.jpg'
+import { Outlet } from 'react-router-dom'
 
 function NavBar() {
   const [userInfo, setUserInfo] = useState(null)
@@ -86,6 +87,7 @@ function NavBar() {
           </Container>
         </Navbar>
       ))}
+      <Outlet />
     </>
   )
 }
