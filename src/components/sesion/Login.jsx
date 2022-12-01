@@ -1,6 +1,53 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth'
+import { useNavigate } from 'react-router-dom'
+import { auth } from 'config/firebase'
 
 function Login() {
+  const [user, setUser] = useState({ name: '', email: '', password: '' })
+  const [error, setError] = useState()
+
+  const navigate = useNavigate()
+
+  const handleUser = ({ target: { name, value } }) => {
+    setUser({
+      ...user,
+      [name]: value,
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    if (e.target.name === 'correo') {
+      try {
+        const userCredentials = await signInWithEmailAndPassword(
+          auth,
+          user.email,
+          user.password
+        )
+        // setLoading(false)
+        navigate('/')
+      } catch (error) {
+        setError(error.message)
+      }
+    }
+
+    if (e.target.name === 'google') {
+      try {
+        const googleProvider = new GoogleAuthProvider()
+        const userCredentials = await signInWithPopup(auth, googleProvider)
+        // setLoading(false)
+        navigate('/')
+      } catch (error) {
+        setError(error.message)
+      }
+    }
+  }
+
   return (
     <>
       <div className="grid grid-cols-2 min-h-screen w-full">
@@ -28,7 +75,9 @@ function Login() {
             </div>
             <button
               className="mt-5 w-full  py-2   bg-[#4D0084] text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300"
-              type="submit"
+              name="google"
+              // type="submit"
+              onClick={handleSubmit}
             >
               Sign in
             </button>

@@ -1,43 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'config/firebase'
 import Search from 'components/search/Search'
 import Pagination from 'components/pagination/Pagination'
-import Navbar from 'components/navbar/Navbar'
 import CardHouse from 'components/cards/CardHouse'
 
 const Home = () => {
-  const [userInfo, setUserInfo] = useState()
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        // const uid = user.uid
-        console.log(user)
-        setUserInfo(user)
-        // ...
-      } else {
-        console.log('user deslogeado')
-        setUserInfo(null)
-        // User is signed out
-        // ...
-      }
-    })
-  }, [userInfo])
-
   return (
     <>
-      <section>
+      <section className="relative top-12">
         <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-4 lg:items-start">
-            <div className="lg:sticky lg:top-4">
+            <div className="lg:sticky lg:top-4 ">
               <details
-                open
+                open={true}
                 className="overflow-hidden rounded border border-gray-200"
               >
-                <summary className="flex items-center justify-between bg-gray-100 px-5 py-3 lg:hidden">
+                <summary className="flex items-center justify-between bg-gray-100 px-5 py-3 lg:hidden sticky top-4">
                   <span className="text-sm font-medium"> Toggle Filters </span>
 
                   <svg

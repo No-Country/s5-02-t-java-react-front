@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from 'config/firebase'
 import { Outlet } from 'react-router-dom'
 
 function Navbar() {
@@ -6,6 +8,27 @@ function Navbar() {
   const [profile, setProfile] = useState(false)
   const [product, setProduct] = useState(false)
   const [deliverables, setDeliverables] = useState(false)
+
+  const [userInfo, setUserInfo] = useState()
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        // const uid = user.uid
+        console.log(user)
+        setUserInfo(user)
+        // ...
+      } else {
+        console.log('user deslogeado')
+        setUserInfo(null)
+        // User is signed out
+        // ...
+      }
+    })
+  }, [userInfo])
+
   return (
     <>
       <div className="bg-gray-200 h-full w-full">
@@ -40,7 +63,7 @@ function Navbar() {
                           <span className="ml-2 font-bold">Dashboard</span>
                         </div>
                       </li>
-                      <li className="flex xl:hidden flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex justify-center">
+                      <li className="flex xl:hidden flex-col cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none justify-center">
                         <div className="flex items-center">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +83,7 @@ function Navbar() {
                           <span className="ml-2 font-bold">Products</span>
                         </div>
                       </li>
-                      <li className="flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                      <li className="flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 items-center focus:text-indigo-700 focus:outline-none">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="icon icon-tabler icon-tabler-compass"
@@ -79,7 +102,7 @@ function Navbar() {
                         </svg>
                         <span className="ml-2 font-bold">Performance</span>
                       </li>
-                      <li className="border-b border-gray-300 flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none">
+                      <li className="border-b border-gray-300 flex xl:hidden cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pt-2 pb-4 hover:text-indigo-700 items-center focus:text-indigo-700 focus:outline-none">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           className="icon icon-tabler icon-tabler-code"
