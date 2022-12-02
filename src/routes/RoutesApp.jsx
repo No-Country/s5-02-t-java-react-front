@@ -5,7 +5,8 @@ import Home from 'pages/home/Home'
 import Login from 'components/sesion/Login'
 import Navbar from 'components/navbar/Navbar'
 import Register from 'components/sesion/Register'
-import Carrusel from 'components/search/Carrusel'
+import Housedetail from 'pages/housedetail/Housedetail'
+import Landing from 'pages/landing/Landing'
 // import Register from '../components/register/Register'
 // import { LoginReg } from 'pages/loginReg/loginReg'
 // import NavBar from 'components/navbar/Navbar'
@@ -20,12 +21,13 @@ function RoutesApp() {
       */}
 
       <Route path="/" element={<Navbar />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/home" element={<Home />} />
         {/* <Route path="/register" element={<Register />} /> */}
         {/* <Route path="/login" element={<LoginReg action="login" />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/carrusel" element={<Carrusel />} />
+        <Route path="/housedetail" element={<Housedetail />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
