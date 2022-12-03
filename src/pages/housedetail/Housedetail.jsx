@@ -42,7 +42,9 @@ require('@tailwindcss/aspect-ratio'),
           {/* Options */}
           <div className="mt-4 lg:row-span-3 lg:mt-0">
             <h2 className="sr-only">Product information</h2>
-            <p className="text-3xl tracking-tight text-gray-900">$192</p>
+            <p className="text-3xl tracking-tight text-gray-900">
+              $192 por hora
+            </p>
             {/* Reviews */}
             <div className="mt-6">
               <h3 className="sr-only">Reviews</h3>
@@ -137,7 +139,6 @@ require('@tailwindcss/aspect-ratio'),
               <>
                 {/* component */}
                 <div className="flex items-center justify-center py-8 px-4">
-                  {/*- more free and premium Tailwind CSS components at https://tailwinduikit.com/ -*/}
                   <div className="max-w-sm w-full shadow-lg">
                     <div className="md:p-8 p-5 dark:bg-gray-800 bg-white rounded-t">
                       <div className="px-4 flex items-center justify-between">
