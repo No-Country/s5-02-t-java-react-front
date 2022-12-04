@@ -1,32 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from 'config/firebase'
+import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import Logo from 'components/logo/Logo'
 import Logout from 'components/sesion/Logout'
+import useToggle from 'hooks/useToggle'
+import useSession from 'hooks/useSesion'
 
 function Navbar() {
-  const [show, setShow] = useState(null)
-  const [profile, setProfile] = useState(false)
-  const [userInfo, setUserInfo] = useState()
-
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        // const uid = user.uid
-        console.log(user)
-        setUserInfo(user)
-        // ...
-      } else {
-        console.log('user deslogeado')
-        setUserInfo(null)
-        // User is signed out
-        // ...
-      }
-    })
-  }, [userInfo])
+  // estados locales con hooks personalizados
+  const profile = useToggle()
+  const show = useToggle()
+  const { isOnline, user } = useSession()
+  // estados de app globales
 
   return (
     <>
@@ -65,7 +49,7 @@ function Navbar() {
                     Inicio
                   </NavLink>
                   <NavLink
-                    to={'/contactanos'}
+                    to={'/contact'}
                     className="flex px-5 items-center py-6 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none transition duration-150 ease-in-out"
                   >
                     <span className="mr-2">
@@ -87,7 +71,7 @@ function Navbar() {
                     </span>
                     Contactanos
                   </NavLink>
-                  {!userInfo && (
+                  {!isOnline && (
                     <>
                       <NavLink
                         to={'/login'}
@@ -141,14 +125,14 @@ function Navbar() {
                     </>
                   )}
                 </div>
-                {userInfo && (
+                {isOnline && (
                   <div className="hidden xl:flex items-center">
                     <div className="ml-6 relative">
                       <div
                         className="flex items-center relative"
-                        onClick={() => setProfile(!profile)}
+                        onClick={() => profile.handleToggle()}
                       >
-                        {profile && (
+                        {profile.toggle && (
                           <ul className="p-2 w-40 border-r bg-white absolute rounded right-0 shadow top-0 mt-16 z-10">
                             <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                               <div className="flex items-center">
@@ -197,10 +181,7 @@ function Navbar() {
                         <div className="cursor-pointer flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-white transition duration-150 ease-in-out">
                           <img
                             className="rounded-full h-10 w-10 object-cover"
-                            src={
-                              userInfo.photoURL ||
-                              'https://tuk-cdn.s3.amazonaws.com/assets/components/horizontal_navigation/hn_2.png'
-                            }
+                            src={user?.photo}
                             alt="logo"
                           />
                         </div>
@@ -252,9 +233,9 @@ function Navbar() {
               <div
                 id="menu"
                 className="text-gray-800"
-                onClick={() => setShow(!show)}
+                onClick={() => show.handleToggle()}
               >
-                {show ? (
+                {show.toggle ? (
                   ''
                 ) : (
                   <svg
@@ -281,14 +262,14 @@ function Navbar() {
           {/*Mobile responsive sidebar*/}
           <div
             className={
-              show
+              show.toggle
                 ? 'w-full xl:hidden h-full absolute z-40  transform  translate-x-0 '
                 : '   w-full xl:hidden h-full absolute z-40  transform -translate-x-full'
             }
           >
             <div
               className="bg-gray-800 opacity-50 w-full h-full"
-              onClick={() => setShow(!show)}
+              onClick={() => show.handleToggle()}
             />
             <div className="w-64 z-40 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
               <div className="px-6 h-full">
@@ -322,7 +303,7 @@ function Navbar() {
                         <div
                           id="cross"
                           className="text-gray-800 cursor-pointer"
-                          onClick={() => setShow(!show)}
+                          onClick={() => show.handleToggle()}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -498,14 +479,11 @@ function Navbar() {
                         <div className="flex items-center">
                           <img
                             alt="profile-pic"
-                            src={
-                              userInfo?.photoURL ||
-                              'https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png'
-                            }
+                            src={user?.photo}
                             className="w-8 h-8 rounded-md"
                           />
                           <p className=" text-gray-800 text-base leading-4 ml-2">
-                            {userInfo?.displayName || userInfo?.email}
+                            {user?.name || user?.email}
                           </p>
                         </div>
                         <ul className="flex">

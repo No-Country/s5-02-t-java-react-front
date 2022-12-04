@@ -1,23 +1,12 @@
-import { signOut } from 'firebase/auth'
-import { auth } from 'config/firebase'
-import { useNavigate } from 'react-router-dom'
+import useSession from 'hooks/useSesion'
 
 export default function Logout() {
-  const navigate = useNavigate()
-
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth)
-      navigate('/')
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  const { handleLogOut } = useSession()
 
   return (
     <li
       className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 flex items-center focus:text-indigo-700 focus:outline-none"
-      onClick={handleSignOut}
+      onClick={handleLogOut}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
