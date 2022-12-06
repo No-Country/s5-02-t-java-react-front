@@ -1,6 +1,19 @@
-import React from 'react'
+import { useState } from 'react'
+
+const initialState = {
+  infantil: true,
+  familiar: true,
+  social: true,
+  boda: true,
+}
 
 function HouseFilter() {
+  const [type, setType] = useState(initialState)
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    console.log(e.target.name)
+  }
   return (
     <div className="lg:sticky lg:top-4 ">
       <details
@@ -18,9 +31,9 @@ function HouseFilter() {
             stroke="currentColor"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
@@ -41,7 +54,7 @@ function HouseFilter() {
                   className="h-5 w-5 rounded border-gray-300"
                 />
 
-                <label for="infantil" className="ml-3 text-sm font-medium">
+                <label htmlFor="infantil" className="ml-3 text-sm font-medium">
                   Infantil
                 </label>
               </div>
@@ -54,7 +67,7 @@ function HouseFilter() {
                   className="h-5 w-5 rounded border-gray-300"
                 />
 
-                <label for="familiar" className="ml-3 text-sm font-medium">
+                <label htmlFor="familiar" className="ml-3 text-sm font-medium">
                   Familiar
                 </label>
               </div>
@@ -67,7 +80,7 @@ function HouseFilter() {
                   className="h-5 w-5 rounded border-gray-300"
                 />
 
-                <label for="social" className="ml-3 text-sm font-medium">
+                <label htmlFor="social" className="ml-3 text-sm font-medium">
                   Social
                 </label>
               </div>
@@ -79,7 +92,7 @@ function HouseFilter() {
                   className="h-5 w-5 rounded border-gray-300"
                 />
 
-                <label for="boda" className="ml-3 text-sm font-medium">
+                <label htmlFor="boda" className="ml-3 text-sm font-medium">
                   Boda
                 </label>
               </div>
@@ -110,7 +123,7 @@ function HouseFilter() {
                     className="h-5 w-5 rounded border-gray-300"
                   />
 
-                  <label for="100" className="ml-3 text-sm font-medium">
+                  <label htmlFor="100" className="ml-3 text-sm font-medium">
                     Aforo: 100
                   </label>
                 </div>
@@ -123,7 +136,7 @@ function HouseFilter() {
                     className="h-5 w-5 rounded border-gray-300"
                   />
 
-                  <label for="300" className="ml-3 text-sm font-medium">
+                  <label htmlFor="300" className="ml-3 text-sm font-medium">
                     Aforo: 300
                   </label>
                 </div>
@@ -136,7 +149,7 @@ function HouseFilter() {
                     className="h-5 w-5 rounded border-gray-300"
                   />
 
-                  <label for="500" className="ml-3 text-sm font-medium">
+                  <label htmlFor="500" className="ml-3 text-sm font-medium">
                     Aforo: 500
                   </label>
                 </div>
@@ -149,7 +162,7 @@ function HouseFilter() {
                     className="h-5 w-5 rounded border-gray-300"
                   />
 
-                  <label for="999" className="ml-3 text-sm font-medium">
+                  <label htmlFor="999" className="ml-3 text-sm font-medium">
                     Aforo: 999
                   </label>
                 </div>

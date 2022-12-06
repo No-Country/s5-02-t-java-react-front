@@ -7,7 +7,7 @@ function Login() {
     <>
       <div className="grid grid-cols-2 min-h-screen w-full">
         {/* Login Container */}
-        <div className=" flex justify-center items-center content-center  bg-[#2B2B2B]">
+        <div className=" flex justify-center items-center content-center  bg-gray-100">
           <div className=" w-[60%] flex-col  px-2  rounded-[4px]">
             <div className="mb-8 flex justify-center">
               <img

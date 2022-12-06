@@ -16,7 +16,7 @@ function HousesContainer() {
       </div>
 
       {/* contenedor de las cards houses */}
-      <div className="mt-4 grid grid-cols-1 gap-px border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-4 grid grid-cols-1 gap-px border border-gray-200 bg-gray-50 sm:grid-cols-2 lg:grid-cols-3">
         <CardHouse />
         <CardHouse />
         <CardHouse />

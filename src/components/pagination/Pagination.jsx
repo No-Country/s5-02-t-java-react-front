@@ -1,11 +1,26 @@
-import React from 'react'
+import { useState } from 'react'
 
-export function Pagination() {
+function Pagination() {
+  const [current, setCurrent] = useState(1)
+  const [total, setPages] = useState(5)
+
+  const handleNext = () => {
+    if (total === current) setCurrent(1)
+    else setCurrent(current + 1)
+  }
+  const handlePrevius = () => {
+    if (current === 1) setCurrent(total)
+    else setCurrent(current - 1)
+  }
+
   return (
     <>
       <div className="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
         <div className="lg:w-3/5 w-full  flex items-center justify-between border-t border-gray-200">
-          <div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
+          <div
+            className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer"
+            onClick={handlePrevius}
+          >
             <svg
               width={14}
               height={8}
@@ -38,32 +53,30 @@ export function Pagination() {
             <p className="text-sm ml-3 font-medium leading-none ">Previous</p>
           </div>
           <div className="sm:flex hidden">
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              1
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              2
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              3
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-indigo-700 border-t border-indigo-400 pt-3 mr-4 px-2">
-              4
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              5
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              6
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              7
-            </p>
-            <p className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2">
-              8
-            </p>
+            {Array.from({ length: total }, (x, i, j) =>
+              current === i + 1 ? (
+                <button
+                  key={crypto.randomUUID()}
+                  className="text-xl font-bold leading-none cursor-pointer text-indigo-700 hover:text-indigo-700 border-t-2 border-transparent border-indigo-400 hover:border-indigo-400 pt-2 mr-4 px-2 "
+                  onClick={() => setCurrent(i + 1)}
+                >
+                  {i + 1}
+                </button>
+              ) : (
+                <button
+                  key={crypto.randomUUID()}
+                  className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2"
+                  onClick={() => setCurrent(i + 1)}
+                >
+                  {i + 1}
+                </button>
+              )
+            )}
           </div>
-          <div className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer">
+          <div
+            className="flex items-center pt-3 text-gray-600 hover:text-indigo-700 cursor-pointer"
+            onClick={handleNext}
+          >
             <p className="text-sm font-medium leading-none mr-3">Next</p>
             <svg
               width={14}

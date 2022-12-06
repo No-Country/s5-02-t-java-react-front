@@ -1,7 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function Search() {
-  useEffect(() => {})
+  const [search, setSearch] = useState('')
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
 
   return (
     <>
@@ -10,6 +14,7 @@ function Search() {
           className="text-sm font-medium leading-none text-left text-black px-4  w-full border rounded border-gray-300  outline-none"
           type="text"
           placeholder="Buscar"
+          onChange={handleSearch}
         />
         <svg
           className="absolute right-3 z-10 cursor-pointer"

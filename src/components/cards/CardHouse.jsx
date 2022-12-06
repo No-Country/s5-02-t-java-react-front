@@ -4,14 +4,21 @@ import { BsPeopleFill } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 
 function CardHouse() {
+  const title = 'Nombre House'
+  const description = 'description of the house'
+  const tag = 'TagName'
+  const price = 100
+  const aforo = 500
+  const address = 'ubicacion'
+
   return (
     <>
-      <div className="bg-gray-100 ">
+      <div className="bg-transparent">
         {/* Remove py-8 */}
-        <div className="mx-auto container py-8">
-          <div className="flex flex-wrap items-center lg:justify-between justify-center">
+        <div className="mx-auto container py-2 ">
+          <div className="flex flex-wrap items-center lg:justify-between justify-center ">
             {/* Card 1 */}
-            <div className="mx-2 w-72 lg:mb-0 mb-8">
+            <div className="mx-2 w-72 lg:mb-0 mb-8 shadow-md">
               <div>
                 <NavLink to={'/housedetail'}>
                   <img
@@ -25,30 +32,30 @@ function CardHouse() {
                 {/* tags */}
                 <div className="flex items-center justify-between px-4 pt-4">
                   <div className="bg-yellow-200 py-1.5 px-3 rounded-full">
-                    <p className="text-xs text-yellow-500">Graduación</p>
+                    <p className="text-xs text-yellow-500">{tag}</p>
+                  </div>
+                  <div className="bg-rose-200 py-1.5 px-3 rounded-full">
+                    <p className="text-xs text-rose-500">${price}/hora</p>
                   </div>
                 </div>
                 {/* Detalles */}
                 <div className="p-4">
                   <div className="flex items-center">
-                    <h2 className="text-lg font-semibold">Salon Margarita</h2>
+                    <h2 className="text-lg font-semibold">{title}</h2>
                     <p className="text-xs text-gray-600 pl-5">4 stars</p>
                   </div>
-                  <p className="text-xs text-gray-600 mt-2">
-                    The Apple iPhone XS is available in 3 colors with 64GB
-                    memory. Shoot amazing videos
-                  </p>
+                  <p className="text-xs text-gray-600 mt-2">{description}</p>
                   <div className="flex mt-4"></div>
                   <div className="flex items-center justify-start py-2">
                     <BsPeopleFill />
                     <h2 className="text-indigo-700 text-xs font-semibold ml-2">
-                      Aforo, 250
+                      Aforo, {aforo}
                     </h2>
                   </div>
                   <div className="flex items-center justify-start py-2">
                     <FaMapMarkerAlt />
                     <h2 className="text-indigo-700 text-xs font-semibold ml-2">
-                      Bay Area, San Francisco
+                      {address}
                     </h2>
                   </div>
                 </div>
