@@ -1,14 +1,80 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios"
+import { auth } from 'config/firebase'
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 const URL = process.env.REACT_APP_URL
 // <----------------- acciones que conectan a la base de datos ----------------->
 
+export const loginWhitCorreo = createAsyncThunk(
+  'USERS/@LOGIN_CORREO',
+  async (user) => {
+    try {
+      const sesion = await signInWithEmailAndPassword(
+        auth,
+        user.email,
+        user.password
+      )
+      return {
+        user: {
+          token: sesion?.user?.accessToken,
+          name: sesion?.user?.displayName,
+          email: sesion?.user?.email,
+          photo: sesion?.user?.photoURL
+        },
+        msg: `User logged in as ${sesion.user.email}`
+      }
+    } catch (error) {
+      const msg = error.message
+      return { msg }
+    }
+  }
+)
+
+export const loginWhitGoogle = createAsyncThunk(
+  'USERS/@LOGIN_GOOGLE',
+  async () => {
+    try {
+      const googleProvider = new GoogleAuthProvider()
+      const sesion = await signInWithPopup(auth, googleProvider)
+      return {
+        user: {
+          token: sesion?.user?.accessToken,
+          name: sesion?.user?.displayName,
+          email: sesion?.user?.email,
+          photo: sesion?.user?.photoURL
+        },
+        msg: `User logged in as ${sesion.user.displayName || sesion.user.email}`
+      }
+    } catch (error) {
+      const msg = error.message
+      return { msg }
+    }
+  }
+)
+
+export const cerrarSession = createAsyncThunk(
+  'USERS/@CLOSE_SESION',
+  async () => {
+    try {
+      // const googleProvider = new GoogleAuthProvider()
+      // const sesion = await signInWithPopup(auth, googleProvider)
+      await signOut(auth)
+      console.log("userDeslogeado")
+      return {
+        msg: `User logout was successful`
+      }
+    } catch (error) {
+      return { msg: "error" }
+    }
+  }
+)
+
 export const getAll = createAsyncThunk(
-  'USUARIOS/@GETALL',
+  'USERS/@GETALL',
   async (query = '') => {
     try {
-      const { data } = await axios.get(`${URL}/usuarios${query}`)
+      const { data } = await axios.get(`${URL} /usuarios${query}`)
       return data
     } catch (error) {
       const msg = error.message.data.msg
@@ -18,7 +84,7 @@ export const getAll = createAsyncThunk(
 )
 
 export const getByNickname = createAsyncThunk(
-  'USUARIOS/@GETBYNICKNAME',
+  'USERS/@GETBYNICKNAME',
   async (user) => {
     try {
       const { data } = await axios.get(
@@ -33,7 +99,7 @@ export const getByNickname = createAsyncThunk(
 )
 
 export const getAllByName = createAsyncThunk(
-  'USUARIOS/@GETALL',
+  'USERS/@GETALL',
   async ({ payload }) => {
     try {
       const { data } = await axios.get(`${URL}/usuarios`, {
@@ -47,7 +113,7 @@ export const getAllByName = createAsyncThunk(
   }
 )
 
-export const getById = createAsyncThunk('USUARIOS/@GETBYID', async (id) => {
+export const getById = createAsyncThunk('USERS/@GETBYID', async (id) => {
   try {
     const { data } = await axios.get(`${URL}/usuarios/${id}`)
     return data
@@ -57,7 +123,7 @@ export const getById = createAsyncThunk('USUARIOS/@GETBYID', async (id) => {
   }
 })
 
-export const create = createAsyncThunk('USUARIOS/@CREATE', async (body) => {
+export const create = createAsyncThunk('USERS/@CREATE', async (body) => {
   try {
     const { data } = await axios({
       method: 'post',
@@ -72,7 +138,7 @@ export const create = createAsyncThunk('USUARIOS/@CREATE', async (body) => {
   }
 })
 
-export const update = createAsyncThunk('USUARIOS/@UPDATE', async (usuario) => {
+export const update = createAsyncThunk('USERS/@UPDATE', async (usuario) => {
   try {
     const { data } = await axios.put(
       `${URL}/usuarios/${usuario.id}`,
@@ -86,7 +152,7 @@ export const update = createAsyncThunk('USUARIOS/@UPDATE', async (usuario) => {
 })
 
 export const updatePerfil = createAsyncThunk(
-  'USUARIOS/@UPDATE',
+  'USERS/@UPDATE',
   async (usuario) => {
     try {
       const { data } = await axios.put(
@@ -102,7 +168,7 @@ export const updatePerfil = createAsyncThunk(
 )
 
 export const deleteById = createAsyncThunk(
-  'USUARIOS/@DELETEBYID',
+  'USERS/@DELETEBYID',
   async (id) => {
     try {
       const { data } = await axios.delete(`${URL}/usuarios/${id}`)

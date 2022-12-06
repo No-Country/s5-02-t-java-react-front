@@ -8,116 +8,170 @@ import {
   deleteById,
   getByNickname,
   updatePerfil,
-} from 'features/actions/usuariosActions'
+  loginWhitCorreo,
+  loginWhitGoogle,
+  cerrarSession,
+} from 'features/actions/usersActions'
 
+export const initialUser = {
+  token: null,
+  name: null,
+  email: null,
+  photo: null
+}
+
+export const initialSesion = {
+  user: initialUser,
+  isOnline: false,
+  msg: null
+}
 // estado inicial
 const initialState = {
-  usuarios: [],
-  usuario: {},
-  cargando: null,
+  users: [],
+  user: {},
+  loading: null,
+  sesion: initialSesion
 }
 
 // reducers para usuarios
-const usuariosSlice = createSlice({
-  name: 'usuarios',
+const usersSlice = createSlice({
+  name: 'users',
   initialState,
   reducers: {
     cambiarCargando: (state) => {
-      state.cargando = !state.cargando
+      state.loading = !state.loading
     },
+    sessionState: (state, { payload }) => {
+      state.sesion = payload
+    }
+
   },
   extraReducers: {
+    // cerrar sesion
+    [cerrarSession.pending]: (state) => { state.loading = true },
+    [cerrarSession.fulfilled]: (state) => {
+      state.loading = false
+      state.sesion.user = initialState.sesion
+    },
+    [cerrarSession.rejected]: (state, { payload }) => {
+      state.loading = true
+      state.sesion.msg = payload.msg
+    },
+    // getSesionWhitCorreo
+    [loginWhitCorreo.pending]: (state) => { state.loading = true },
+    [loginWhitCorreo.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.sesion.user = payload.user
+      state.sesion.isOnline = true
+      state.sesion.msg = payload.msg
+    },
+    [loginWhitCorreo.rejected]: (state, { payload }) => {
+      state.loading = true
+      state.sesion.msg = payload.msg
+    },
+    // getSesionWhitGoogle
+    [loginWhitGoogle.pending]: (state) => { state.loading = true },
+    [loginWhitGoogle.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.sesion.user = payload.user
+      state.sesion.isOnline = true
+      state.sesion.msg = payload.msg
+    },
+    [loginWhitGoogle.rejected]: (state, { payload }) => {
+      state.loading = true
+      state.sesion.msg = payload.msg
+    },
     //getAll
     [getAll.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [getAll.fulfilled]: (state, { payload }) => {
-      state.cargando = false
-      state.usuarios = payload.usuarios
+      state.loading = false
+      state.users = payload.users
       state.count = payload.count
     },
     [getAll.rejected]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     //getByNickname
     [getByNickname.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [getByNickname.fulfilled]: (state, { payload }) => {
-      state.cargando = false
-      state.usuario = payload?.usuarios[0]
+      state.loading = false
+      state.usuario = payload?.users[0]
     },
     [getByNickname.rejected]: (state, { type }) => {
-      state.cargando = true
+      state.loading = true
     },
     //getById
     [getById.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [getById.fulfilled]: (state, { payload }) => {
-      state.cargando = false
+      state.loading = false
       state.usuario = payload.usuario
     },
     [getById.rejected]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     //create
     [create.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [create.fulfilled]: (state, { payload }) => {
-      state.cargando = false
-      state.usuarios = [...state.usuarios, payload.usuario]
+      state.loading = false
+      state.users = [...state.users, payload.usuario]
       state.usuario = payload.usuario
       state.total = state.total + 1
     },
     [create.rejected]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     //update
     [update.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [update.fulfilled]: (state, { payload }) => {
-      const index = state.usuarios.findIndex(
+      const index = state.users.findIndex(
         (usuario) => usuario.id === payload.usuario.id
       )
 
-      state.usuarios[index] = payload.usuario
+      state.users[index] = payload.usuario
 
-      state.cargando = false
+      state.loading = false
     },
     [update.rejected]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     //update perfil
     [updatePerfil.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [updatePerfil.fulfilled]: (state, { payload }) => {
       state.usuario = payload.usuario
-      state.cargando = false
+      state.loading = false
     },
     [updatePerfil.rejected]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     //deleteById
     [deleteById.pending]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
     [deleteById.fulfilled]: (state, { payload }) => {
-      state.usuarios = [
-        ...state.usuarios.filter(
+      state.users = [
+        ...state.users.filter(
           (usuario) => usuario.id !== payload.usuario.id
         ),
       ]
       state.total = state.total - 1
-      state.cargando = false
+      state.loading = false
     },
     [deleteById.rejected]: (state) => {
-      state.cargando = true
+      state.loading = true
     },
   },
 })
-export const { cambiarCargando } = usuariosSlice.actions
-export default usuariosSlice.reducer
+export const { cambiarCargando, sessionState } = usersSlice.actions
+export default usersSlice.reducer
