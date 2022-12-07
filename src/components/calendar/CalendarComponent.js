@@ -1,6 +1,9 @@
 import React, { useState } from "react";
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+// import "react-modern-calendar-datepicker/lib/DatePicker.css";
+// import { Calendar } from "react-modern-calendar-datepicker";
+import {Calendar} from '@hassanmojab/react-modern-calendar-datepicker';
+import '@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css';
+import './calendar.css';
 
 
 // ---------- Datos de prueba ----------
@@ -16,16 +19,19 @@ const disabledDays = [
     year: 2022,
     month: 12,
     day: 20,
+    className: 'custom-disabled-day',
   },
   {
     year: 2022,
     month: 12,
     day: 21,
+    className: 'custom-disabled-day',
   },
   {
     year: 2022,
     month: 12,
     day: 7,
+    className: 'custom-disabled-day',
   }
 ];
 //--------------------------------------
@@ -50,11 +56,7 @@ const myCustomLocale = {
 
   // week days by order
   weekDays: [
-    {
-      name: 'Domingo',  
-      short: 'D', 
-      isWeekend: true, 
-    },
+   
     {
       name: 'Lunes',
       short: 'L', 
@@ -80,10 +82,15 @@ const myCustomLocale = {
       short: 'S',
       isWeekend: true,
     },
+    {
+      name: 'Domingo',  
+      short: 'D', 
+      isWeekend: true, 
+    },
   ],
   
 
-  weekStartingIndex: 0,
+  weekStartingIndex: 6,
 
   // return a { year: number, month: number, day: number } object
   getToday(gregorainTodayObject) {
@@ -161,8 +168,10 @@ const CalendarComponent = () => {
         colorPrimaryLight="rgb(88 80 236 / 0.2)"
         disabledDays={disabledDays} 
         onDisabledDayError={handleDisabledSelect} 
+        customDaysClassName={disabledDays}
         shouldHighlightWeekends
         locale={myCustomLocale}
+        calendarTodayClassName="custom-today-day"
         />
     </>
   );
