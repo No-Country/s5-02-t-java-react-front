@@ -18,12 +18,12 @@ function useSesion() {
 
   const handleLoginGoogle = async () => {
     await dispatch(loginWhitGoogle())
-    navigate('/home')
+    navigate('/')
   }
 
   const handleLoginCorreo = async () => {
     await dispatch(loginWhitCorreo())
-    navigate('/home')
+    navigate('/')
   }
 
   const handleLogOut = () => {
@@ -37,7 +37,6 @@ function useSesion() {
         dispatch(
           sessionState({
             user: {
-              token: user.accessToken,
               name: user.displayName,
               email: user.email,
               photo: user.photoURL,

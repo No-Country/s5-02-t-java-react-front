@@ -30,25 +30,27 @@ export const loginWhitCorreo = createAsyncThunk(
     }
   }
 )
-
 export const loginWhitGoogle = createAsyncThunk(
   'USERS/@LOGIN_GOOGLE',
   async () => {
     try {
       const googleProvider = new GoogleAuthProvider()
       const sesion = await signInWithPopup(auth, googleProvider)
+
+      const { data } = await axios({
+        method: 'post',
+        url: `${URL}/auth/sign-up`,
+        headers: {
+          authorization: 'Bearer ' + sesion?.user?.accessToken
+        }
+      })
+
       return {
-        user: {
-          token: sesion?.user?.accessToken,
-          name: sesion?.user?.displayName,
-          email: sesion?.user?.email,
-          photo: sesion?.user?.photoURL
-        },
-        msg: `User logged in as ${sesion.user.displayName || sesion.user.email}`
+        user: data,
+        msg: `User logged in as ${data.email || data.name}`
       }
     } catch (error) {
-      const msg = error.message
-      return { msg }
+      return error.message
     }
   }
 )
