@@ -126,7 +126,7 @@ const ShopCart = () => {
               </fieldset>
 
               <div className="col-span-6">
-                <button className="block w-full rounded-md  bg-[#4D0084] p-2.5 text-sm text-white transition hover:shadow-lg">
+                <button className="block w-full rounded-md  bg-indigo-500 p-2.5 text-sm text-white transition hover:shadow-lg">
                   Pagar
                 </button>
               </div>
