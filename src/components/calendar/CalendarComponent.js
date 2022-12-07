@@ -80,11 +80,6 @@ const myCustomLocale = {
       short: 'S',
       isWeekend: true,
     },
-    {
-      name: 'Domingo',
-      short: 'D',
-      isWeekend: true,
-    },
   ],
   
 
