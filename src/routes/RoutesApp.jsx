@@ -8,9 +8,6 @@ import Register from 'components/sesion/Register'
 import Housedetail from 'pages/housedetail/Housedetail'
 import Landing from 'pages/landing/Landing'
 import Contact from 'pages/contact/Contact'
-// import Register from '../components/register/Register'
-// import { LoginReg } from 'pages/loginReg/loginReg'
-// import NavBar from 'components/navbar/Navbar'
 
 //Aqui iran todas las rutas
 function RoutesApp() {
@@ -24,8 +21,6 @@ function RoutesApp() {
       <Route path="/" element={<Navbar />}>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        {/* <Route path="/register" element={<Register />} /> */}
-        {/* <Route path="/login" element={<LoginReg action="login" />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/housedetail" element={<Housedetail />} />

@@ -14,7 +14,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="bg-gray-200 h-full w-full">
+      <div className="bg-gray-200 h-full w-full ">
         {/* navbar desktop */}
         <nav className="bg-white shadow xl:block hidden">
           <div className="mx-auto container px-6 py-2 xl:py-0">
@@ -212,7 +212,7 @@ function Navbar() {
         </nav>
         {/* Navbar mobile */}
         <nav>
-          <div className="py-4 px-6 w-full flex xl:hidden justify-between items-center bg-white fixed top-0 z-40">
+          <div className="py-4 px-6 w-full flex xl:hidden justify-between items-center bg-white fixed top-0  z-40">
             <div className="w-24">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -271,7 +271,7 @@ function Navbar() {
               className="bg-gray-800 opacity-50 w-full h-full"
               onClick={() => show.handleToggle()}
             />
-            <div className="w-64 z-40 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
+            <div className="w-64 fixed overflow-y-auto z-40 top-0 bg-white shadow h-full flex-col justify-between xl:hidden pb-4 transition duration-150 ease-in-out">
               <div className="px-6 h-full">
                 <div className="flex flex-col justify-between h-full w-full">
                   <div>
@@ -370,7 +370,7 @@ function Navbar() {
                           </div>
                         </li>
                       </NavLink>
-                      <NavLink to={'/contactanos'}>
+                      <NavLink to={'/contact'}>
                         <li className="text-gray-800 pt-8">
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
@@ -396,59 +396,63 @@ function Navbar() {
                           </div>
                         </li>
                       </NavLink>
-                      <NavLink to={'/login'}>
-                        <li className="text-gray-800 pt-8">
-                          <div className="flex items-center">
-                            <div className="w-6 h-6 md:w-8 md:h-8 text-gray-800">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="icon icon-tabler icon-tabler-compass"
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <polyline points="8 16 10 10 16 8 14 14 8 16" />
-                                <circle cx={12} cy={12} r={9} />
-                              </svg>
-                            </div>
-                            <p className="text-gray-800 xl:text-base md:text-2xl text-base ml-3">
-                              Acceder
-                            </p>
-                          </div>
-                        </li>
-                      </NavLink>
-                      <NavLink to={'/register'}>
-                        <li className="text-gray-800 pt-8">
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                              <div className="w-6 h-6 md:w-8 md:h-8 text-gray-800">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="icon icon-tabler icon-tabler-code"
-                                  viewBox="0 0 24 24"
-                                  strokeWidth="1.5"
-                                  stroke="currentColor"
-                                  fill="none"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                >
-                                  <path stroke="none" d="M0 0h24v24H0z" />
-                                  <polyline points="7 8 3 12 7 16" />
-                                  <polyline points="17 8 21 12 17 16" />
-                                  <line x1={14} y1={4} x2={10} y2={20} />
-                                </svg>
+                      {!isOnline && (
+                        <>
+                          <NavLink to={'/login'}>
+                            <li className="text-gray-800 pt-8">
+                              <div className="flex items-center">
+                                <div className="w-6 h-6 md:w-8 md:h-8 text-gray-800">
+                                  <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-compass"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="1.5"
+                                    stroke="currentColor"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  >
+                                    <path stroke="none" d="M0 0h24v24H0z" />
+                                    <polyline points="8 16 10 10 16 8 14 14 8 16" />
+                                    <circle cx={12} cy={12} r={9} />
+                                  </svg>
+                                </div>
+                                <p className="text-gray-800 xl:text-base md:text-2xl text-base ml-3">
+                                  Acceder
+                                </p>
                               </div>
-                              <p className="text-gray-800 xl:text-base md:text-2xl text-base ml-3">
-                                Registrarse
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                      </NavLink>
+                            </li>
+                          </NavLink>
+                          <NavLink to={'/register'}>
+                            <li className="text-gray-800 pt-8">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center">
+                                  <div className="w-6 h-6 md:w-8 md:h-8 text-gray-800">
+                                    <svg
+                                      xmlns="http://www.w3.org/2000/svg"
+                                      className="icon icon-tabler icon-tabler-code"
+                                      viewBox="0 0 24 24"
+                                      strokeWidth="1.5"
+                                      stroke="currentColor"
+                                      fill="none"
+                                      strokeLinecap="round"
+                                      strokeLinejoin="round"
+                                    >
+                                      <path stroke="none" d="M0 0h24v24H0z" />
+                                      <polyline points="7 8 3 12 7 16" />
+                                      <polyline points="17 8 21 12 17 16" />
+                                      <line x1={14} y1={4} x2={10} y2={20} />
+                                    </svg>
+                                  </div>
+                                  <p className="text-gray-800 xl:text-base md:text-2xl text-base ml-3">
+                                    Registrarse
+                                  </p>
+                                </div>
+                              </div>
+                            </li>
+                          </NavLink>
+                        </>
+                      )}
                     </ul>
                   </div>
                   <div className="w-full pt-4">
@@ -474,49 +478,50 @@ function Navbar() {
                         </div>
                       </div>
                     </div>
-                    <div className="border-t border-gray-300">
-                      <div className="w-full flex items-center justify-between pt-1">
-                        <div className="flex items-center">
-                          <img
-                            alt="profile-pic"
-                            src={user?.photo}
-                            className="w-8 h-8 rounded-md"
-                          />
-                          <p className=" text-gray-800 text-base leading-4 ml-2">
-                            {user?.name || user?.email}
-                          </p>
+                    {isOnline && (
+                      <div className="border-t border-gray-300">
+                        <div className="w-full flex items-center justify-between pt-1">
+                          <div className="flex items-center">
+                            <img
+                              alt="profile-pic"
+                              src={user?.photo}
+                              className="w-8 h-8 rounded-md"
+                            />
+                            <p className=" text-gray-800 text-base leading-4 ml-2">
+                              {user?.name || user?.email}
+                            </p>
+                          </div>
+                          <ul className="flex">
+                            <li className="cursor-pointer text-gray-800 pt-5 pb-3">
+                              <div className="flex items-center">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  className="icon icon-tabler icon-tabler-user"
+                                  width={20}
+                                  height={20}
+                                  viewBox="0 0 24 24"
+                                  strokeWidth="1.5"
+                                  stroke="currentColor"
+                                  fill="none"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                >
+                                  <path stroke="none" d="M0 0h24v24H0z" />
+                                  <circle cx={12} cy={7} r={4} />
+                                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                                </svg>
+                              </div>
+                            </li>
+                          </ul>
                         </div>
-                        <ul className="flex">
-                          <li className="cursor-pointer text-gray-800 pt-5 pb-3">
-                            <div className="flex items-center">
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="icon icon-tabler icon-tabler-user"
-                                width={20}
-                                height={20}
-                                viewBox="0 0 24 24"
-                                strokeWidth="1.5"
-                                stroke="currentColor"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <path stroke="none" d="M0 0h24v24H0z" />
-                                <circle cx={12} cy={7} r={4} />
-                                <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
-                              </svg>
-                            </div>
-                          </li>
-                        </ul>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </nav>
-        {/* Code block ends */}
       </div>
       <Outlet />
     </>
