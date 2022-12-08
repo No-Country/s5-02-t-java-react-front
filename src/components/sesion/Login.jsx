@@ -1,74 +1,299 @@
 import useSession from 'hooks/useSesion'
+import { FcGoogle } from 'react-icons/fc'
 
 function Login() {
   const { handleLoginGoogle } = useSession()
 
   return (
     <>
-      <div className="grid grid-cols-2 min-h-screen w-full">
-        {/* Login Container */}
-        <div className=" flex justify-center items-center content-center  bg-gray-100">
-          <div className=" w-[60%] flex-col  px-2  rounded-[4px]">
-            <div className="mb-8 flex justify-center">
-              <img
-                className="w-24"
-                src="https://assets.leetcode.com/static_assets/public/webpack_bundles/images/logo.c36eaf5e6.svg"
-                alt=""
-              />
+      <div className="min-w-screen min-h-screen bg-[url('https://i.ibb.co/7tS5PVV/pexels-rene-asmussen-2504980.jpg')] bg-no-repeat bg-cover bg-center flex items-center justify-center px-5 py-5">
+        <div
+          className="bg-gray-100 text-gray-500 rounded-3xl shadow-xl w-full overflow-hidden"
+          style={{ maxWidth: 1000 }}
+        >
+          <div className="md:flex w-full">
+            <div className="hidden md:block w-1/2 bg-indigo-500 py-10 px-10">
+              <svg
+                id="a87032b8-5b37-4b7e-a4d9-4dbfbe394641"
+                data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg"
+                width="100%"
+                height="auto"
+                viewBox="0 0 744.84799 747.07702"
+              >
+                <path
+                  id="fa3b9e12-7275-481e-bee9-64fd9595a50d"
+                  data-name="Path 1"
+                  d="M299.205,705.80851l-6.56-25.872a335.96693,335.96693,0,0,0-35.643-12.788l-.828,12.024-3.358-13.247c-15.021-4.29394-25.24-6.183-25.24-6.183s13.8,52.489,42.754,92.617l33.734,5.926-26.207,3.779a135.92592,135.92592,0,0,0,11.719,12.422c42.115,39.092,89.024,57.028,104.773,40.06s-5.625-62.412-47.74-101.5c-13.056-12.119-29.457-21.844-45.875-29.5Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#f2f2f2"
+                />
+                <path
+                  id="bde08021-c30f-4979-a9d8-cb90b72b5ca2"
+                  data-name="Path 2"
+                  d="M361.591,677.70647l7.758-25.538a335.93951,335.93951,0,0,0-23.9-29.371l-6.924,9.865,3.972-13.076c-10.641-11.436-18.412-18.335-18.412-18.335s-15.315,52.067-11.275,101.384l25.815,22.51-24.392-10.312a135.91879,135.91879,0,0,0,3.614,16.694c15.846,55.234,46.731,94.835,68.983,88.451s27.446-56.335,11.6-111.569c-4.912-17.123-13.926-33.926-24.023-48.965Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#f2f2f2"
+                />
+                <path
+                  id="b3ac2088-de9b-4f7f-bc99-0ed9705c1a9d"
+                  data-name="Path 22"
+                  d="M747.327,253.4445h-4.092v-112.1a64.883,64.883,0,0,0-64.883-64.883H440.845a64.883,64.883,0,0,0-64.883,64.883v615a64.883,64.883,0,0,0,64.883,64.883H678.352a64.883,64.883,0,0,0,64.882-64.883v-423.105h4.092Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#e6e6e6"
+                />
+                <path
+                  id="b2715b96-3117-487c-acc0-20904544b5b7"
+                  data-name="Path 23"
+                  d="M680.97,93.3355h-31a23.02,23.02,0,0,1-21.316,31.714H492.589a23.02,23.02,0,0,1-21.314-31.714H442.319a48.454,48.454,0,0,0-48.454,48.454v614.107a48.454,48.454,0,0,0,48.454,48.454H680.97a48.454,48.454,0,0,0,48.454-48.454h0V141.7885a48.454,48.454,0,0,0-48.454-48.453Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#fff"
+                />
+                <path
+                  id="b06d66ec-6c84-45dd-8c27-1263a6253192"
+                  data-name="Path 6"
+                  d="M531.234,337.96451a24.437,24.437,0,0,1,12.23-21.174,24.45,24.45,0,1,0,0,42.345A24.43391,24.43391,0,0,1,531.234,337.96451Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ccc"
+                />
+                <path
+                  id="e73810fe-4cf4-40cc-8c7c-ca544ce30bd4"
+                  data-name="Path 7"
+                  d="M561.971,337.96451a24.43594,24.43594,0,0,1,12.23-21.174,24.45,24.45,0,1,0,0,42.345A24.43391,24.43391,0,0,1,561.971,337.96451Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ccc"
+                />
+                <circle
+                  id="a4813fcf-056e-4514-bb8b-e6506f49341f"
+                  data-name="Ellipse 1"
+                  cx="364.43401"
+                  cy="261.50202"
+                  r="24.45"
+                  fill="#6c63ff"
+                />
+                <path
+                  id="bbe451c3-febc-41ba-8083-4c8307a2e73e"
+                  data-name="Path 8"
+                  d="M632.872,414.3305h-142.5a5.123,5.123,0,0,1-5.117-5.117v-142.5a5.123,5.123,0,0,1,5.117-5.117h142.5a5.123,5.123,0,0,1,5.117,5.117v142.5A5.123,5.123,0,0,1,632.872,414.3305Zm-142.5-150.686a3.073,3.073,0,0,0-3.07,3.07v142.5a3.073,3.073,0,0,0,3.07,3.07h142.5a3.073,3.073,0,0,0,3.07-3.07v-142.5a3.073,3.073,0,0,0-3.07-3.07Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ccc"
+                />
+                <rect
+                  id="bb28937d-932f-4fdf-befe-f406e51091fe"
+                  data-name="Rectangle 1"
+                  x="218.56201"
+                  y="447.10197"
+                  width="218.552"
+                  height="2.047"
+                  fill="#ccc"
+                />
+                <circle
+                  id="fcef55fc-4968-45b2-93bb-1a1080c85fc7"
+                  data-name="Ellipse 2"
+                  cx="225.46401"
+                  cy="427.41999"
+                  r="6.902"
+                  fill="#6c63ff"
+                />
+                <rect
+                  id="ff33d889-4c74-4b91-85ef-b4882cc8fe76"
+                  data-name="Rectangle 2"
+                  x="218.56201"
+                  y="516.11803"
+                  width="218.552"
+                  height="2.047"
+                  fill="#ccc"
+                />
+                <circle
+                  id="e8fa0310-b872-4adf-aedd-0c6eda09f3b8"
+                  data-name="Ellipse 3"
+                  cx="225.46401"
+                  cy="496.43702"
+                  r="6.902"
+                  fill="#6c63ff"
+                />
+                <path
+                  d="M660.69043,671.17188H591.62207a4.50493,4.50493,0,0,1-4.5-4.5v-24.208a4.50492,4.50492,0,0,1,4.5-4.5h69.06836a4.50491,4.50491,0,0,1,4.5,4.5v24.208A4.50492,4.50492,0,0,1,660.69043,671.17188Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#6c63ff"
+                />
+                <circle
+                  id="e12ee00d-aa4a-4413-a013-11d20b7f97f7"
+                  data-name="Ellipse 7"
+                  cx="247.97799"
+                  cy="427.41999"
+                  r="6.902"
+                  fill="#6c63ff"
+                />
+                <circle
+                  id="f58f497e-6949-45c8-be5f-eee2aa0f6586"
+                  data-name="Ellipse 8"
+                  cx="270.492"
+                  cy="427.41999"
+                  r="6.902"
+                  fill="#6c63ff"
+                />
+                <circle
+                  id="b4d4939a-c6e6-4f4d-ba6c-e8b05485017d"
+                  data-name="Ellipse 9"
+                  cx="247.97799"
+                  cy="496.43702"
+                  r="6.902"
+                  fill="#6c63ff"
+                />
+                <circle
+                  id="aff120b1-519b-4e96-ac87-836aa55663de"
+                  data-name="Ellipse 10"
+                  cx="270.492"
+                  cy="496.43702"
+                  r="6.902"
+                  fill="#6c63ff"
+                />
+                <path
+                  id="f1094013-1297-477a-ac57-08eac07c4bd5"
+                  data-name="Path 88"
+                  d="M969.642,823.53851H251.656c-1.537,0-2.782-.546-2.782-1.218s1.245-1.219,2.782-1.219H969.642c1.536,0,2.782.546,2.782,1.219S971.178,823.53851,969.642,823.53851Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#3f3d56"
+                />
+                <path
+                  d="M792.25256,565.92292a10.09371,10.09371,0,0,1,1.41075.78731l44.8523-19.14319,1.60093-11.81526,17.92157-.10956-1.05873,27.0982-59.19987,15.65584a10.60791,10.60791,0,0,1-.44749,1.20835,10.2346,10.2346,0,1,1-5.07946-13.68169Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ffb8b8"
+                />
+                <polygon
+                  points="636.98 735.021 624.72 735.021 618.888 687.733 636.982 687.734 636.98 735.021"
+                  fill="#ffb8b8"
+                />
+                <path
+                  d="M615.96281,731.51778h23.64387a0,0,0,0,1,0,0v14.88687a0,0,0,0,1,0,0H601.076a0,0,0,0,1,0,0v0A14.88686,14.88686,0,0,1,615.96281,731.51778Z"
+                  fill="#2f2e41"
+                />
+                <polygon
+                  points="684.66 731.557 672.459 732.759 662.018 686.271 680.025 684.497 684.66 731.557"
+                  fill="#ffb8b8"
+                />
+                <path
+                  d="M891.68576,806.12757h23.64387a0,0,0,0,1,0,0v14.88687a0,0,0,0,1,0,0H876.7989a0,0,0,0,1,0,0v0A14.88686,14.88686,0,0,1,891.68576,806.12757Z"
+                  transform="translate(-303.00873 15.2906) rotate(-5.62529)"
+                  fill="#2f2e41"
+                />
+                <circle
+                  cx="640.3925"
+                  cy="384.57375"
+                  r="24.56103"
+                  fill="#ffb8b8"
+                />
+                <path
+                  d="M849.55636,801.91945a4.47086,4.47086,0,0,1-4.415-3.69726c-6.34571-35.22559-27.08789-150.40528-27.584-153.59571a1.42684,1.42684,0,0,1-.01562-.22168v-8.58789a1.489,1.489,0,0,1,.27929-.87207l2.74024-3.83789a1.47845,1.47845,0,0,1,1.14355-.625c15.62207-.73242,66.78418-2.8789,69.25586.209h0c2.48242,3.10351,1.60547,12.50683,1.4043,14.36035l.00977.19336,22.98535,146.99512a4.51238,4.51238,0,0,1-3.71485,5.13476l-14.35644,2.36524a4.52127,4.52127,0,0,1-5.02539-3.09278c-4.44043-14.18847-19.3291-61.918-24.48926-80.38672a.49922.49922,0,0,0-.98047.13868c.25781,17.60546.88086,62.52343,1.0957,78.0371l.02344,1.6709a4.51811,4.51811,0,0,1-4.09277,4.53614l-13.84375,1.25781C849.83565,801.91359,849.695,801.91945,849.55636,801.91945Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#2f2e41"
+                />
+                <path
+                  id="ae7af94f-88d7-4204-9f07-e3651de85c05"
+                  data-name="Path 99"
+                  d="M852.38089,495.2538c-4.28634,2.548-6.85116,7.23043-8.32276,11.9951a113.681,113.681,0,0,0-4.88444,27.15943l-1.55553,27.60021-19.25508,73.1699c16.68871,14.1207,26.31542,10.91153,48.78049-.63879s25.03222,3.85117,25.03222,3.85117l4.49236-62.25839,6.41837-68.03232a30.16418,30.16418,0,0,0-4.86143-4.67415,49.65848,49.65848,0,0,0-42.44229-8.99538Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ffffff"
+                />
+                <path
+                  d="M846.12661,580.70047a10.52561,10.52561,0,0,1,1.50061.70389l44.34832-22.1972.736-12.02551,18.2938-1.26127.98041,27.4126L852.7199,592.93235a10.4958,10.4958,0,1,1-6.59329-12.23188Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ffb8b8"
+                />
+                <path
+                  id="a6768b0e-63d0-4b31-8462-9b2e0b00f0fd"
+                  data-name="Path 101"
+                  d="M902.76552,508.41151c10.91151,3.85117,12.83354,45.57369,12.83354,45.57369-12.8367-7.06036-28.24139,4.49318-28.24139,4.49318s-3.20916-10.91154-7.06034-25.03223a24.52987,24.52987,0,0,1,5.13436-23.10625S891.854,504.558,902.76552,508.41151Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#ffffff"
+                />
+                <path
+                  id="bfd7963f-0cf8-4885-9d3a-2c00bccda2e3"
+                  data-name="Path 102"
+                  d="M889.99122,467.53052c-3.06-2.44837-7.23517,2.00173-7.23517,2.00173l-2.4484-22.03349s-15.30095,1.8329-25.0935-.61161-11.32255,8.87513-11.32255,8.87513a78.57978,78.57978,0,0,1-.30582-13.77092c.61158-5.50838,8.56838-11.01675,22.6451-14.68932S887.6518,439.543,887.6518,439.543C897.44542,444.43877,893.05121,469.97891,889.99122,467.53052Z"
+                  transform="translate(-227.576 -76.46149)"
+                  fill="#2f2e41"
+                />
+              </svg>
             </div>
-            <div className="flex flex-col text-sm rounded-md">
-              <input
-                className="mb-5 rounded-[4px]  p-2 hover:outline-none focus:outline-none hover:border-yellow-500 "
-                type="text"
-                placeholder="Username or Email id"
-              />
-              <input
-                className=" rounded-[4px] p-2 hover:outline-none focus:outline-none hover:border-yellow-500"
-                type="password"
-                placeholder="Password"
-              />
-            </div>
-            <button
-              className="mt-5 w-full  py-2   bg-[#4D0084] text-white rounded-[4px] hover:bg-slate-400 scale-105 duration-300"
-              name="correo"
-              // type="submit"
-              // onClick={(e) => handleSubmit(e, 'correo')}
-            >
-              Sign in
-            </button>
-            <div className="mt-5 flex justify-between text-sm text-gray-600">
-              <a href="#">Forgot password?</a>
-              <a href="#">Sign up</a>
-            </div>
-            <div className="flex justify-center mt-5 text-sm">
-              <p className="text-gray-400">or you can sign with</p>
-            </div>
-            <div className="mt-5 flex justify-center gap-3    ">
-              <img
-                className="h-7 grayscale cursor-pointer hover:grayscale-0 scale-105 duration-300"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAFbUlEQVRoge1ZXWwUVRT+zszs2nZbiUARui2b1lCgJAiWFAMRIoEHFYOtqSL4wAMQGyDxwUQMmiAhSh+NbRFN1AeaQGpacZUHTIjRItLQpCApPw0GdttSUihIty3dnZnjw5T+7Nz52c4WH+j3NHvvd875zt479+cMMI1pPNmgdDjhSshDaqiMSX8ZjFIGLQIwD0D2CCUGoJvAV0FoJcinM5feaKH90L3G9pTA4Ka8Al1SdgF4F0AwRfNOAEcl0mqzGrs6J6thUgn0V87NheY/SIxtAPyTDT6COAPfsqp+8nS4+06qxiknEKsIbQHzlwBmpmrrgLsM3p3TFD2WipHrBHhnqS/W21tHwPbUtbkHA0eyc3P30NetCTd8Vwnw63lZA4r8A0CveJPnEoyTAU2tpHD3oBNVcvS1s9T3WMUDAOHVAVk5wZVLHN8vxwRivb11j1X8IxDWx9T+L5xpNoiVh7YCfDR9qlIHE2/OaYwet+q3TOBBeXCWBPkKgNlTosw9+nRVXWi1xFpOISL5M/z/4gFgpiz7PrXqFI7AYEUwX2f5Ohw2KXnZGiirXoO0uAzSrLkAAL2vB3p7C9TmMLSLzV6Ej0dcVpQFmQ3/RJI7FBFbZ3k3bMRLwSL4q6ohl5SZ+/KKIOUVQVm/GVp7C+I1H0DvuelFPAD4NVWtAvBRcodpBHg/pIEL828CyBd5kpe8iKf2fgMKPO0qsnalFQ/3vQkwp6jZhK6AEglRA7TxjaYRGLoQWgmwULwULJooPhFH4lQ91D9OQI9cNTgFxVDWlsO3YQv07usYrt6RDvEAEBxK5JcCnS22CRhHYvHi5K+qHhXPfT14eHAb9BuXJ3D0jjbEO9qg/noMfO82+EGfK3WBRmOaDVSELDk6SesA2CegM1aI5MvPvzQ25xNxofgJfm5a900WBJQmt5mWUQIVi4yV1RtHnxOn6m3FTxUYWJjcJlqF5omMpcVjK476+4/CAI+mgRX0rusY2rPOlj++TTCdTNpEG1m2oA0069nRZ4522Aq1Ao3sFR6Qk9wg3AemDPrE1Wj8P+zmJRZBlEAMgtsW370NChYBAKhgAbijzWQoCi4tfAGZnzcZPvp6UhInQL/Jv4B0S2SpXx5bvZS15a4jKmvGuHp7iw3TFUzaTAkw+JrIUm0Ojz77NmyBVFjiGE0qXALfhnfGfJwJW3IHKkKO04eAq6YYpgbCeZGxdrEZWvs544fPj4x939kmIRWWIOPj7wHFZ9hfOgvt7z9tBTqBYdYm2Afk01YO4nV7wbF/Dd7Mucis/gn+7QcgFS8HZQSAjCxIxcvh334AmYdOgJ6ZYwSO3Uf88F5P4gGAiE3arA5zNwAUiJzIJSuN81D2DFdBOXYfw4d2QPM6/5kjgWXRwuRqnnkEDEK9lR+t/RwefrgJ2qW/HGNql84aXO8vLyBRvagU6e1Cs3Q1lFUbIZWUgWYbmyTfuWVcaM6EPc/5cRiWFP25rIbOruQOyztxf/n8wwS8ly4FXkDENYHG6B5Rn+WdWFf0fQBSrlVOAe5qCc3yTmyZwIyGzj4GC7N+nGCgyq7oa1vYymmKHmPgSPpluQOBa3OaIg12HMfKXLYS2cVE4vPz1OKXrHvR951IjglQA7TsRGIrGCfTo8sVfg6o6lv0G1QnomMCAEDh7sHAnNw3GPjKuzaHWODawL1IuZvKtMFPEf0VBW8TUw3SXrWjXgbvcprzyXA1AuOR0xg9rkNbREx1AIZTtRdgmIhrNEVblKp4wOtHvsr8oK5KuwFshcXZyQZREI5Ksl4r2mHdIj2fWfdDGmrLX6GTtI6A0pHqQRATPrNSJ4GvMXCeiE9nLY22puMz6zSm8aTjPy9i6LxlaK5BAAAAAElFTkSuQmCC"
-                alt="google"
-                onClick={handleLoginGoogle}
-              />
-              <img
-                className="h-7 grayscale cursor-pointer hover:grayscale-0 scale-105 duration-300 "
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAC40lEQVRoge3Yz4sXdRzH8Ye7pG4SsgcFpVo3kbR1PdWhLgWpl04evHmwv0FDBSMPpVR0j252kJaQWEIvIiEoopcoVsEfCf4IfyBIoZW47Xb4zPodvs5nPvPd78x6aJ7wOcx75vN6v94zn/nM5zO0tLS0tPTBogY0R7ARo1iWxR7hGqZwo4GcfTOGrwSTs4n2G77EhufitIv1mMSMtPHuNoMf8PqCu8YA9uNxRbNl7R/syzQXhGU4XoPx7vajzjvTqPkzDZifa6ebLGJAM3e+6Ek0Mpz2dyV6gjexGd9mx1VNPsFhvI+3MN11fl9VU1W/A+vxCxbnYlMYzx2PCdPjEM4KU+of2bnlWIu38Rd242Ku7wW8kTt+jE24XNFfkknP3sWzdYnjXIH+0brExxTP85fqSoArBfr/qvCxq/KyfKh4qI1gsLrHKIN4pSA+gJ016EeXB5/VIZ5xMJLjSr/Cr0aE/8Zwv+I5hjPNolwvl3VMDaHxSPwEHvTmsZQHONmjB6QLGI3Er6YczYPYcIl5QLqAlyLxO0k7vXM7El9e1ilVwHQk/mLSTu/E1kAxD0gXcD8SX5e00zuxfcG9sk6pAu5G4u9V6NsLg3g3cq60gBQrxXdb2/oR7mJ7JMcMVvQrfjEifhOr+xUX5vnfIzmmatD3eUR8Fj9LTHMJXsOvJfqH+tB+yqjOev0mtmIPHmaxP4W9wqoeNFfj46xvzPy0sN6qhaM6G5G9wuJui7BizI/XKXxSonMgu6bKX4yJuswTnsKjnPiOLL6rIPGWEp2tFYzPCk+3trs/x0e5BLd0Pjwf4BjO42ssKdEYUu3u76rbPGHYTOSSfDFPndiqc64d0cwvT7AUp3LJvhFWi4vxgmrTalkBPyl/grUwhO8Kks8IG/YUsQKOCDdoQVgkvBP5F3vW/Ap4KIz5xoZNGWvwvc534nqFPtd15vkJYdf33BnBp8J/nxTvZNfWPk22tLS0tPz/+A/3Y3+ksla8tgAAAABJRU5ErkJggg=="
-                alt="github"
-              />
-              <img
-                className="h-7 grayscale cursor-pointer hover:grayscale-0 scale-105 duration-300"
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAAFEklEQVRoge2ZW2gcVRjH/2c22SQ1aZLNRXNraFATvKFs0QdfTPTFiKCIQUwFwZQYkqIY8cELrKLFF2+0G4yVgpBgm4q0oO2DJvpgVUICKohtUFuSzcZoLrK7uezOzPn7kLRddmZ2ZjJJfGg+WHZ2zjnf/P7nfOc7c84CO7Zj17aJTfEyRF/TSvxuAM0SCIJsAlFFsJAECCQoGQVwgeQ4wZFL04FRhIT0+mhPAm77dLlO12Q3yf0kawCAJEgAWPte+xAmZRFKDug5Ijx9oCyyrQJuHIpX+JN4k8DTJPwWgNng0+4jBfKY7lNfi3ZWz225gFsHEk9KicMQDGQHdASfXmeeFD3RnorjWyIg2M/c1cJEn5SiwwjiGf5qHaB/JrfyIDqFumkCgv3ctXLd0mckHtxS+Kvtz/jy5ePRzuplOzbFAXzuNsMDQKu2itMI/er3LGC1MNG3zfBrZVI8UF5S+oEdX9YQumUw0U6JAS/wCoiWej/urc5FfbGCkjwFKZ1QdSKWIn6MpvDxTyuW7SX5xEJvzQnXApo+iZUJRTkPsHyj8HdW+vBecyH2FvssO+lcJIXHPl+08E0AWEhRNMZfNE+xliGkKOKQF/i7Kn0Yenh3Vvh0yxJ2gRzK1y05zW7eMbBcu75IbQjeJ4jD9xfB73OWpR3MmY7St6N7HAtQKXvoYYVtbchDbZFtfkgTkBUeJP1S0bvM2uYY7oSokIl2L9mmuS7XFHQypqN3OI5f/lavkKuSdvBrzyCfwhBfRZvQswpo2hu/h0TtRuFJ4PYKY78AwAvDcXw3lbRtb7FC1+y+GAnGgNF0n2bj3OwFniTKC4xu/1qSOLdReF7+LVsy/ZoJ2Od1kSryGyfvZEwHPcADACWCtgIkebMXeJJQTJJPPCm9wRMgZGOmX0OwkqjyAr9+aTBJR9kmax1SVGX6NQmh9W3ghuEtFMArPACwKNOj2Qi4cvzD/oAh5s1C6L76PEw8e73h/snfVvDS14tO4E1H15jviATJgBN4ACjOE6aTNtNyFaAk3zjg0bjmGJ5kPLO92SSecQpPsy5xaRPzmlN4CGDGVgCICa8T1o39vqA6ggcACVywFUBwzFW28ACvSeDPRc0R/Pr1WKYP4yQGR4zA1pP6ua9iyLncDetlRx8qMWw0fp5V8f5o/EodAFjViKQmncKDCkZsBVyaDozuqVqYAllnB08CZ/9YNZR9xBKIDAWzSzpOnV92M2EzO29SlQ3jmbzGORASEpKDTuCtyqzMAzwADJodRZq+tOs5Ikwi5eWVejPhCSZTqhY282sqYPpAWQTksc2CB4x1HMOTkMRRvNU47VgAANDvf4XknFv47CHkHp7EvC50d3tiAIh0FC+Q4qBbeLvFzSU8CHYh1Gh56Jt14xrtqThOoP9/hA/rb9x0MptP2533TGVlN8FTTuEtRbiEB/ClrkSet+OzPzpoE7ovT7aDPOPi4Wb8zuHJLzRlVxtCzZp3AQCindXLswU3PELBD+3h3Wei9PYEw5ov8ihC9ifTgNnrtJV1CnUO6Aq8M/2tAhyRRPlGFrIs8P8Q7LaL+Uxzfvq0bgu9NSeSSTaR7AOQdLMWWC1SEjiiKckmt/CAmxFIs/jLtfMAusvenTqkaegB2E6iziX8FIABVdXDVouUE9ucv1lDVHYXRPaRsoUSwe+fqWoN5Iv80gKfIgTw74qUwxeXFztOz31DcowCI6psGN+Mv1l3bMeudfsPP8EkRZOLDr8AAAAASUVORK5CYII="
-                alt="facebook"
-              />
+            <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
+              <div className="flex justify-center items-center text-center mb-10">
+                <h1 className="font-bold text-3xl text-gray-900">LOGIN</h1>{' '}
+                <svg
+                  aria-label="logo"
+                  id="logo"
+                  enableBackground="new 0 0 300 300"
+                  height={44}
+                  viewBox="0 0 300 300"
+                  width={43}
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                >
+                  <g>
+                    <path
+                      fill="#4c51bf"
+                      d="m234.735 35.532c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16zm0 24c-4.412 0-8-3.588-8-8s3.588-8 8-8 8 3.588 8 8-3.588 8-8 8zm-62.529-14c0-2.502 2.028-4.53 4.53-4.53s4.53 2.028 4.53 4.53c0 2.501-2.028 4.529-4.53 4.529s-4.53-2.027-4.53-4.529zm89.059 60c0 2.501-2.028 4.529-4.53 4.529s-4.53-2.028-4.53-4.529c0-2.502 2.028-4.53 4.53-4.53s4.53 2.029 4.53 4.53zm-40.522-5.459-88-51.064c-1.242-.723-2.773-.723-4.016 0l-88 51.064c-1.232.715-1.992 2.033-1.992 3.459v104c0 1.404.736 2.705 1.938 3.428l88 52.936c.635.381 1.35.572 2.062.572s1.428-.191 2.062-.572l88-52.936c1.201-.723 1.938-2.023 1.938-3.428v-104c0-1.426-.76-2.744-1.992-3.459zm-90.008-42.98 80.085 46.47-52.95 31.289-23.135-13.607v-21.713c0-2.209-1.791-4-4-4s-4 1.791-4 4v21.713l-26.027 15.309c-1.223.719-1.973 2.029-1.973 3.447v29.795l-52 30.727v-94.688zm0 198.707-80.189-48.237 51.467-30.412 24.723 14.539v19.842c0 2.209 1.791 4 4 4s4-1.791 4-4v-19.842l26.027-15.307c1.223-.719 1.973-2.029 1.973-3.447v-31.667l52-30.728v94.729z"
+                    />
+                  </g>
+                </svg>
+              </div>
+              <div>
+                <div className="flex -mx-3">
+                  <div className="w-full px-3 mb-5">
+                    <label htmlFor="" className="text-xs font-semibold px-1">
+                      Email
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-email-outline text-gray-400 text-lg" />
+                      </div>
+                      <input
+                        type="email"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                        placeholder="johnsmith@example.com"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex -mx-3">
+                  <div className="w-full px-3 mb-12">
+                    <label htmlFor="" className="text-xs font-semibold px-1">
+                      Password
+                    </label>
+                    <div className="flex">
+                      <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
+                        <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
+                      </div>
+                      <input
+                        type="password"
+                        className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
+                        placeholder="************"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex -mx-3">
+                  <div className="w-full px-3 mb-5">
+                    <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                      Login
+                    </button>
+                  </div>
+                </div>
+                <div className="flex -mx-3 items-center ">
+                  <div className="w-full px-3 mb-5">
+                    <button
+                      className="flex justify-center items-center w-full max-w-xs mx-auto border-solid border-2 border-indigo-500 bg-transparent text-black rounded-lg px-3 py-3 font-semibold"
+                      onClick={handleLoginGoogle}
+                    >
+                      <FcGoogle className="flex mr-2" />
+                      Inicia Sesión con Google
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div>
-          <img
-            className="h-full"
-            src="https://i.ibb.co/sWZgqkZ/Rectangle-610.jpg"
-            alt="house"
-          />
         </div>
       </div>
     </>
