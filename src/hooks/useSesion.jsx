@@ -43,6 +43,7 @@ function useSesion() {
         dispatch(
           sessionState({
             user: {
+              token: user.accessToken,
               name: user.displayName,
               email: user.email,
               photo: user.photoURL,

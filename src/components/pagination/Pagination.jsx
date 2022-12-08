@@ -1,18 +1,8 @@
-import { useState } from 'react'
+import usePagination from 'hooks/usePagination'
 
 function Pagination() {
-  const [current, setCurrent] = useState(1)
-  const [total, setPages] = useState(5)
-
-  const handleNext = () => {
-    if (total === current) setCurrent(1)
-    else setCurrent(current + 1)
-  }
-  const handlePrevius = () => {
-    if (current === 1) setCurrent(total)
-    else setCurrent(current - 1)
-  }
-
+  const { currentPage, totalPages, handleCurrent, handleNext, handlePrevius } =
+    usePagination()
   return (
     <>
       <div className="flex items-center justify-center py-10 lg:px-0 sm:px-6 px-4">
@@ -53,12 +43,12 @@ function Pagination() {
             <p className="text-sm ml-3 font-medium leading-none ">Previous</p>
           </div>
           <div className="sm:flex hidden">
-            {Array.from({ length: total }, (x, i, j) =>
-              current === i + 1 ? (
+            {Array.from({ length: totalPages }, (x, i, j) =>
+              currentPage === i + 1 ? (
                 <button
                   key={crypto.randomUUID()}
                   className="text-xl font-bold leading-none cursor-pointer text-indigo-700 hover:text-indigo-700 border-t-2 border-transparent border-indigo-400 hover:border-indigo-400 pt-2 mr-4 px-2 "
-                  onClick={() => setCurrent(i + 1)}
+                  onClick={() => handleCurrent(i + 1)}
                 >
                   {i + 1}
                 </button>
@@ -66,7 +56,7 @@ function Pagination() {
                 <button
                   key={crypto.randomUUID()}
                   className="text-sm font-medium leading-none cursor-pointer text-gray-600 hover:text-indigo-700 border-t border-transparent hover:border-indigo-400 pt-3 mr-4 px-2"
-                  onClick={() => setCurrent(i + 1)}
+                  onClick={() => handleCurrent(i + 1)}
                 >
                   {i + 1}
                 </button>

@@ -100,8 +100,9 @@ export const loginWithGoogle = createAsyncThunk(
         }
       })
 
+      console.log(data)
       return {
-        user: data,
+        user: { token: sesion?.user?.accessToken, ...data },
         msg: `User logged in as ${data.email || data.name}`
       }
     } catch (error) {

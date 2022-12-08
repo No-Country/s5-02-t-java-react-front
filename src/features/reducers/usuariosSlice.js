@@ -14,6 +14,7 @@ import {
 } from 'features/actions/usersActions'
 
 export const initialUser = {
+  token: null,
   name: null,
   email: null,
   photo: null
@@ -72,6 +73,7 @@ const usersSlice = createSlice({
     [loginWithGoogle.pending]: (state) => { state.loading = true },
     [loginWithGoogle.fulfilled]: (state, { payload }) => {
       state.loading = false
+      state.sesion.user.token = payload?.token
       state.sesion.user.name = payload?.name
       state.sesion.user.email = payload?.email
       state.sesion.user.photo = payload?.image?.imageUrl
