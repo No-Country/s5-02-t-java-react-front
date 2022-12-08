@@ -1,6 +1,18 @@
-import React from 'react'
+import useSesion from 'hooks/useSesion'
+import React, { useState } from 'react'
 
 function Register() {
+  const { handleRegisterWithCorreo } = useSesion()
+
+  const [credentials, setCredentials] = useState(null)
+
+  const handleCredentials = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    })
+  }
+
   return (
     <div className="min-w-screen min-h-screen bg-[url('https://i.ibb.co/7tS5PVV/pexels-rene-asmussen-2504980.jpg')] bg-no-repeat bg-cover bg-center flex items-center justify-center px-5 py-5">
       <div
@@ -220,22 +232,24 @@ function Register() {
             </div>
             <div>
               <div className="flex -mx-3">
-                <div className="w-1/2 px-3 mb-5">
+                <div className="w-full px-3 mb-5">
                   <label htmlFor="" className="text-xs font-semibold px-1">
-                    First name
+                    Nombre completo
                   </label>
                   <div className="flex">
                     <div className="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center">
                       <i className="mdi mdi-account-outline text-gray-400 text-lg" />
                     </div>
                     <input
+                      onChange={handleCredentials}
+                      name="name"
                       type="text"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
-                      placeholder="John"
+                      placeholder="Ejemp: Jhon Smith"
                     />
                   </div>
                 </div>
-                <div className="w-1/2 px-3 mb-5">
+                {/* <div className="w-1/2 px-3 mb-5">
                   <label htmlFor="" className="text-xs font-semibold px-1">
                     Last name
                   </label>
@@ -249,7 +263,7 @@ function Register() {
                       placeholder="Smith"
                     />
                   </div>
-                </div>
+                </div> */}
               </div>
               <div className="flex -mx-3">
                 <div className="w-full px-3 mb-5">
@@ -261,6 +275,8 @@ function Register() {
                       <i className="mdi mdi-email-outline text-gray-400 text-lg" />
                     </div>
                     <input
+                      onChange={handleCredentials}
+                      name="email"
                       type="email"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="johnsmith@example.com"
@@ -278,6 +294,8 @@ function Register() {
                       <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
                     </div>
                     <input
+                      onChange={handleCredentials}
+                      name="password"
                       type="password"
                       className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                       placeholder="************"
@@ -287,7 +305,10 @@ function Register() {
               </div>
               <div className="flex -mx-3">
                 <div className="w-full px-3 mb-5">
-                  <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                  <button
+                    className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                    onClick={() => handleRegisterWithCorreo(credentials)}
+                  >
                     REGISTER NOW
                   </button>
                 </div>

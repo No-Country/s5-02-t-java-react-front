@@ -3,13 +3,16 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 import { BsPeopleFill } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 
-function CardHouse() {
-  const title = 'Nombre House'
-  const description = 'description of the house'
-  const tag = 'TagName'
+function CardHouse({
+  address,
+  capacity,
+  city,
+  description,
+  name,
+  phone,
+  photograpy,
+}) {
   const price = 100
-  const aforo = 500
-  const address = 'ubicacion'
 
   return (
     <>
@@ -22,7 +25,10 @@ function CardHouse() {
               <div>
                 <NavLink to={'/housedetail'}>
                   <img
-                    src="https://www.conclusion.com.ar/wp-content/uploads/2020/07/Salon.jpg"
+                    src={
+                      photograpy ||
+                      'https://www.conclusion.com.ar/wp-content/uploads/2020/07/Salon.jpg'
+                    }
                     className="w-full h-44"
                     alt="salon"
                   />
@@ -32,7 +38,7 @@ function CardHouse() {
                 {/* tags */}
                 <div className="flex items-center justify-between px-4 pt-4">
                   <div className="bg-yellow-200 py-1.5 px-3 rounded-full">
-                    <p className="text-xs text-yellow-500">{tag}</p>
+                    <p className="text-xs text-yellow-500">{city}</p>
                   </div>
                   <div className="bg-rose-200 py-1.5 px-3 rounded-full">
                     <p className="text-xs text-rose-500">${price}/hora</p>
@@ -41,15 +47,15 @@ function CardHouse() {
                 {/* Detalles */}
                 <div className="p-4">
                   <div className="flex items-center">
-                    <h2 className="text-lg font-semibold">{title}</h2>
-                    <p className="text-xs text-gray-600 pl-5">4 stars</p>
+                    <h2 className="text-lg font-semibold">{name}</h2>
+                    <p className="text-xs text-gray-600 pl-5">{phone}</p>
                   </div>
                   <p className="text-xs text-gray-600 mt-2">{description}</p>
                   <div className="flex mt-4"></div>
                   <div className="flex items-center justify-start py-2">
                     <BsPeopleFill />
                     <h2 className="text-indigo-700 text-xs font-semibold ml-2">
-                      Aforo, {aforo}
+                      {capacity}
                     </h2>
                   </div>
                   <div className="flex items-center justify-start py-2">

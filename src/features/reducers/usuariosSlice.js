@@ -8,12 +8,13 @@ import {
   deleteById,
   getByNickname,
   updatePerfil,
-  loginWhitCorreo,
-  loginWhitGoogle,
   cerrarSession,
+  loginWithCorreo,
+  loginWithGoogle,
 } from 'features/actions/usersActions'
 
 export const initialUser = {
+  token: null,
   name: null,
   email: null,
   photo: null
@@ -57,29 +58,29 @@ const usersSlice = createSlice({
       state.sesion.msg = payload.msg
     },
     // getSesionWhitCorreo
-    [loginWhitCorreo.pending]: (state) => { state.loading = true },
-    [loginWhitCorreo.fulfilled]: (state, { payload }) => {
+    [loginWithCorreo.pending]: (state) => { state.loading = true },
+    [loginWithCorreo.fulfilled]: (state, { payload }) => {
       state.loading = false
-      state.sesion.user = payload.user
+      state.sesion.user.email = payload?.email
       state.sesion.isOnline = true
       state.sesion.msg = payload.msg
     },
-    [loginWhitCorreo.rejected]: (state, { payload }) => {
+    [loginWithCorreo.rejected]: (state, { payload }) => {
       state.loading = true
       state.sesion.msg = payload.msg
     },
     // getSesionWhitGoogle
-    [loginWhitGoogle.pending]: (state) => { state.loading = true },
-    [loginWhitGoogle.fulfilled]: (state, { payload }) => {
+    [loginWithGoogle.pending]: (state) => { state.loading = true },
+    [loginWithGoogle.fulfilled]: (state, { payload }) => {
       state.loading = false
+      state.sesion.user.token = payload?.token
       state.sesion.user.name = payload?.name
       state.sesion.user.email = payload?.email
       state.sesion.user.photo = payload?.image?.imageUrl
-
       state.sesion.isOnline = true
       state.sesion.msg = payload.msg
     },
-    [loginWhitGoogle.rejected]: (state, { payload }) => {
+    [loginWithGoogle.rejected]: (state, { payload }) => {
       state.loading = true
       state.sesion.msg = payload.msg
     },

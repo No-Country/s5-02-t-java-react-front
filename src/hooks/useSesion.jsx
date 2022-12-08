@@ -2,8 +2,9 @@
 import { auth } from 'config/firebase'
 import {
   cerrarSession,
-  loginWhitCorreo,
-  loginWhitGoogle,
+  loginWithCorreo,
+  loginWithGoogle,
+  registerWithCorreo,
 } from 'features/actions/usersActions'
 import { initialSesion, sessionState } from 'features/reducers/usuariosSlice'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -17,12 +18,17 @@ function useSesion() {
   const navigate = useNavigate()
 
   const handleLoginGoogle = async () => {
-    await dispatch(loginWhitGoogle())
+    await dispatch(loginWithGoogle())
     navigate('/')
   }
 
-  const handleLoginCorreo = async () => {
-    await dispatch(loginWhitCorreo())
+  const handleLoginCorreo = async (user) => {
+    await dispatch(loginWithCorreo(user))
+    navigate('/')
+  }
+
+  const handleRegisterWithCorreo = async (user) => {
+    await dispatch(registerWithCorreo(user))
     navigate('/')
   }
 
@@ -37,6 +43,7 @@ function useSesion() {
         dispatch(
           sessionState({
             user: {
+              token: user.accessToken,
               name: user.displayName,
               email: user.email,
               photo: user.photoURL,
@@ -62,6 +69,7 @@ function useSesion() {
     handleLoginCorreo,
     handleLoginGoogle,
     handleLogOut,
+    handleRegisterWithCorreo,
   }
 }
 

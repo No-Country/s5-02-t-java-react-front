@@ -1,8 +1,18 @@
 import useSession from 'hooks/useSesion'
+import { useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 
 function Login() {
-  const { handleLoginGoogle } = useSession()
+  const { handleLoginGoogle, handleLoginCorreo } = useSession()
+
+  const [credentials, setCredentials] = useState(null)
+
+  const handleCredentials = (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    })
+  }
 
   return (
     <>
@@ -249,6 +259,8 @@ function Login() {
                         <i className="mdi mdi-email-outline text-gray-400 text-lg" />
                       </div>
                       <input
+                        name="email"
+                        onChange={handleCredentials}
                         type="email"
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="johnsmith@example.com"
@@ -266,6 +278,8 @@ function Login() {
                         <i className="mdi mdi-lock-outline text-gray-400 text-lg" />
                       </div>
                       <input
+                        name="password"
+                        onChange={handleCredentials}
                         type="password"
                         className="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500"
                         placeholder="************"
@@ -275,7 +289,10 @@ function Login() {
                 </div>
                 <div className="flex -mx-3">
                   <div className="w-full px-3 mb-5">
-                    <button className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">
+                    <button
+                      className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+                      onClick={() => handleLoginCorreo(credentials)}
+                    >
                       Login
                     </button>
                   </div>
