@@ -1,42 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios"
 import { auth } from 'config/firebase'
-import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth'
 
 const URL = process.env.REACT_APP_URL
 // <----------------- acciones que conectan a la base de datos ----------------->
 
-export const loginWhitCorreo = createAsyncThunk(
-  'USERS/@LOGIN_CORREO',
+
+export const registerWithCorreo = createAsyncThunk(
+  'USERS/@REGISTER_CORREO',
   async (user) => {
     try {
-      const sesion = await signInWithEmailAndPassword(
+      const sesion = await createUserWithEmailAndPassword(
         auth,
         user.email,
         user.password
       )
-      return {
-        user: {
-          token: sesion?.user?.accessToken,
-          name: sesion?.user?.displayName,
-          email: sesion?.user?.email,
-          photo: sesion?.user?.photoURL
-        },
-        msg: `User logged in as ${sesion.user.email}`
-      }
-    } catch (error) {
-      const msg = error.message
-      return { msg }
-    }
-  }
-)
-export const loginWhitGoogle = createAsyncThunk(
-  'USERS/@LOGIN_GOOGLE',
-  async () => {
-    try {
-      const googleProvider = new GoogleAuthProvider()
-      const sesion = await signInWithPopup(auth, googleProvider)
-
       const { data } = await axios({
         method: 'post',
         url: `${URL}/auth/sign-up`,
@@ -50,7 +29,84 @@ export const loginWhitGoogle = createAsyncThunk(
         msg: `User logged in as ${data.email || data.name}`
       }
     } catch (error) {
-      return error.message
+      const msg = error.code
+      return { msg }
+    }
+  }
+)
+
+export const loginWithCorreo = createAsyncThunk(
+  'USERS/@LOGIN_CORREO',
+  async (user) => {
+    try {
+      const sesion = await signInWithEmailAndPassword(
+        auth,
+        user.email,
+        user.password
+      )
+      console.log("sesion", sesion?.user?.accessToken)
+
+      const { data } = await axios({
+        method: 'post',
+        url: `${URL}/auth/login`,
+        headers: {
+          authorization: 'Bearer ' + sesion?.user?.accessToken
+        }
+      })
+
+      if (data) {
+        const { data } = await axios({
+          method: 'post',
+          url: `${URL}/auth/sign-up`,
+          headers: {
+            authorization: 'Bearer ' + sesion?.user?.accessToken
+          }
+        })
+        return {
+          user: data,
+          msg: `User logged in as ${data.email || data.name}`
+        }
+      } else {
+        await signOut(auth)
+        console.log("userDeslogeado")
+        return {
+          use: {
+            email: user.email
+          },
+          msg: `User no authenticated`
+        }
+      }
+
+    } catch (error) {
+      console.log(error)
+      const msg = error.code
+      return { msg }
+    }
+  }
+)
+
+export const loginWithGoogle = createAsyncThunk(
+  'USERS/@LOGIN_GOOGLE',
+  async () => {
+    try {
+      const googleProvider = new GoogleAuthProvider()
+      const sesion = await signInWithPopup(auth, googleProvider)
+      console.log("sesion", sesion?.user?.accessToken)
+      const { data } = await axios({
+        method: 'post',
+        url: `${URL}/auth/sign-up`,
+        headers: {
+          authorization: 'Bearer ' + sesion?.user?.accessToken
+        }
+      })
+
+      return {
+        user: data,
+        msg: `User logged in as ${data.email || data.name}`
+      }
+    } catch (error) {
+      const msg = error.code
+      return { msg }
     }
   }
 )
