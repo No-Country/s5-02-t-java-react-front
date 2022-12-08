@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const SectionImage = () => {
   return (
@@ -20,9 +21,11 @@ const SectionImage = () => {
               Suscríbite para recibir información a diario de nuestros salones.
             </p>
             <div className="mt-8 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0">
-              <button className="transform rounded-md bg-indigo-500 px-8 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-200 hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none sm:mx-2">
-                Ver salones
-              </button>
+              <NavLink to={'/home'}>
+                <button className="transform rounded-md bg-indigo-500 px-8 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-200 hover:bg-indigo-700 focus:bg-indigo-700 focus:outline-none sm:mx-2">
+                  Ver salones
+                </button>
+              </NavLink>
             </div>
           </div>
         </div>

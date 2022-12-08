@@ -576,7 +576,7 @@ function Team() {
                   </p>
                   <div className="w-full flex justify-center pt-5 pb-5">
                     <a
-                      href="https://www.linkedin.com/in/vmc555/"
+                      href="https://github.com/vmc555"
                       target={'_blank'}
                       className="mx-5"
                       rel="noreferrer"
@@ -599,7 +599,7 @@ function Team() {
                       </div>
                     </a>
                     <a
-                      href="https://github.com/vmc555"
+                      href="www.linkedin.com/in/vmc555/"
                       target={'_blank'}
                       className="mx-5"
                       rel="noreferrer"
