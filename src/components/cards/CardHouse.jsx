@@ -19,9 +19,9 @@ function CardHouse({
       <div className="bg-transparent">
         {/* Remove py-8 */}
         <div className="mx-auto container py-2 ">
-          <div className="flex flex-wrap items-center lg:justify-between justify-center ">
+          <div className="flex flex-wrap items-center lg:justify-between justify-center">
             {/* Card 1 */}
-            <div className="mx-2 w-72 lg:mb-0 mb-8 shadow-md">
+            <div className="mx-2 w-72 lg:mb-0 mb-8 shadow-md h-[450px] bg-white">
               <div>
                 <NavLink to={'/housedetail'}>
                   <img
