@@ -8,6 +8,7 @@ function CardHouse({
   capacity,
   city,
   description,
+  id,
   name,
   phone,
   photograpy,
@@ -23,7 +24,7 @@ function CardHouse({
             {/* Card 1 */}
             <div className="mx-2 w-72 lg:mb-0 mb-8 shadow-md h-[450px] bg-white">
               <div>
-                <NavLink to={'/housedetail'}>
+                <NavLink to={`/housedetail/${id}`}>
                   <img
                     src={
                       photograpy ||

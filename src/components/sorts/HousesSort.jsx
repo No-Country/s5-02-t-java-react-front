@@ -1,12 +1,12 @@
-import { useState } from 'react'
+import { setOrder } from 'features/reducers/housesSlice'
+import { useDispatch } from 'react-redux'
 
 function HousesSort() {
-  const [sort, setSort] = useState('')
-
+  const dispatch = useDispatch()
   const handleSort = (e) => {
     e.preventDefault()
     if (e.target.value !== 'ordenar') {
-      setSort(e.target.value)
+      dispatch(setOrder(e.target.value))
     }
   }
 
@@ -25,10 +25,10 @@ function HousesSort() {
         <option value={'ordenar'} readOnly>
           Ordenar
         </option>
-        <option value="name-asc">Nombre, A-Z</option>
-        <option value="name-desc">Nombre, Z-A</option>
-        <option value="capacity-asc">Capacidad, 0-9</option>
-        <option value="capacity-desc">Capacidad, 9-0</option>
+        <option value="name-ASC">Nombre, A-Z</option>
+        <option value="name-DESC">Nombre, Z-A</option>
+        <option value="capacity-ASC">Capacidad, 0-9</option>
+        <option value="capacity-DESC">Capacidad, 9-0</option>
       </select>
     </div>
   )

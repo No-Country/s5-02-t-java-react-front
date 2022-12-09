@@ -23,7 +23,7 @@ function RoutesApp() {
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/housedetail" element={<Housedetail />} />
+        <Route path="/housedetail/:houseId" element={<Housedetail />} />
         <Route path="/team" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Route>

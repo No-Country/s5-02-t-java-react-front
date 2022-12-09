@@ -22,6 +22,61 @@ const getAllHouses = createAsyncThunk(
   }
 )
 
+const getHousesPrediction = createAsyncThunk(
+  "HOUSES/@GETALLPREDICTIONS",
+  async ({ token }) => {
+    try {
+      const { data } = await axios.get(`${URL}/home_event`, {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      })
+
+      console.log(data)
+      return data
+    } catch (error) {
+      return error.message
+    }
+  }
+)
+
+const getHouseById = createAsyncThunk(
+  "HOUSES/@GETBYID",
+  async ({ token, id }) => {
+    try {
+      const { data } = await axios.get(`${URL}/home_event/find/${id}`, {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      })
+      console.log(data)
+      return data
+    } catch (error) {
+      return error.message
+    }
+  }
+)
+
+const getHouseByName = createAsyncThunk(
+  "HOUSES/@GETBYNAME",
+  async ({ token, name }) => {
+    try {
+      const { data } = await axios.get(`${URL}/home_event/name?name=${name}`, {
+        headers: {
+          authorization: 'Bearer ' + token
+        }
+      })
+      console.log(data)
+      return data
+    } catch (error) {
+      return error.message
+    }
+  }
+)
+
 export {
-  getAllHouses
+  getAllHouses,
+  getHouseById,
+  getHousesPrediction,
+  getHouseByName
 }

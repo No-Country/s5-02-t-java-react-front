@@ -5,10 +5,10 @@ import Search from 'components/search/Search'
 import Pagination from 'components/pagination/Pagination'
 import CardHouse from 'components/cards/CardHouse'
 import HousesSort from 'components/sorts/HousesSort'
-import { getAllHouses } from 'features/actions/housesActions'
+import { getAllHouses, getHouseByName } from 'features/actions/housesActions'
 
 function HousesContainer() {
-  const { houses, totalElements, currentPage } = useSelector(
+  const { houses, totalElements, currentPage, search, order } = useSelector(
     ({ housesStore }) => housesStore
   )
   const { user } = useSesion()
@@ -16,15 +16,26 @@ function HousesContainer() {
 
   useEffect(() => {
     if (user.token !== null) {
-      const query = `enablePage=true&size=6&page=${currentPage}`
-      dispatch(
-        getAllHouses({
-          token: user.token,
-          query,
-        })
-      )
+      if (search === '') {
+        const type = order?.name !== '' ? `&name=${order.name}` : ''
+        const dir = order?.dir !== '' ? `&dir=${order.dir}` : ''
+        const query = `enablePage=true&size=6&page=${currentPage}${dir}${type}`
+        dispatch(
+          getAllHouses({
+            token: user.token,
+            query,
+          })
+        )
+      } else {
+        dispatch(
+          getHouseByName({
+            token: user.token,
+            name: search,
+          })
+        )
+      }
     }
-  }, [user.token, currentPage, dispatch])
+  }, [user.token, currentPage, search, dispatch, order.name, order.dir])
 
   return (
     <div className="lg:col-span-3">

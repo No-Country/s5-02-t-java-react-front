@@ -1,16 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getAllHouses } from 'features/actions/housesActions'
+import { getAllHouses, getHouseById, getHouseByName, getHousesPrediction } from 'features/actions/housesActions'
 
 // estado inicial
 const initialState = {
+  searchPredictions: [],
   houses: [],
   house: {},
   loading: null,
   currentPage: 1,
   totalPages: 0,
   totalElements: 0,
-  msg: ""
+  msg: "",
+  search: "",
+  order: {
+    dir: "",
+    name: ""
+  }
 }
 
 // reducers para usuarios
@@ -31,7 +37,14 @@ const housesSlice = createSlice({
     },
     setCurrent: (state, { payload }) => {
       state.currentPage = payload
-    }
+    },
+    setSearch: (state, { payload }) => {
+      state.search = payload
+    },
+    setOrder: (state, { payload }) => {
+      state.order.name = payload.split("-")[0]
+      state.order.dir = payload.split("-")[1]
+    },
   },
   extraReducers: {
     // peticiones al backend
@@ -46,8 +59,32 @@ const housesSlice = createSlice({
     [getAllHouses.rejected]: (state, { payload }) => {
       state.loading = false
       state.msg = payload
-    }
+    },
+    [getHousesPrediction.pending]: (state) => { state.loading = true },
+    [getHousesPrediction.fulfilled]: (state, { payload }) => {
+      state.loading = false
+      state.searchPredictions = payload.data
+    },
+    [getHousesPrediction.rejected]: (state) => { state.loading = false },
+    [getHouseById.pending]: (state) => { state.loading = true },
+    [getHouseById.fulfilled]: (state, { payload }) => {
+      state.loading = true
+      state.house = payload
+    },
+    [getHouseById.rejected]: (state, { payload }) => {
+      state.loading = false
+      state.msg = payload
+    },
+    [getHouseByName.pending]: (state) => { state.loading = true },
+    [getHouseByName.fulfilled]: (state, { payload }) => {
+      state.loading = true
+      state.houses = payload
+    },
+    [getHouseByName.rejected]: (state, { payload }) => {
+      state.loading = false
+      state.msg = payload
+    },
   },
 })
-export const { cambiarCargando, setCurrent, setNext, setPrevius } = housesSlice.actions
+export const { cambiarCargando, setCurrent, setNext, setPrevius, setSearch, setOrder } = housesSlice.actions
 export default housesSlice.reducer
