@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         comforta: ['Comfortaa', 'cursive'],
+        gentium: ['Gentium Book Basic', 'serif']
       },
     },
   },
