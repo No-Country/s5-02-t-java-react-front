@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getHousesPrediction } from 'features/actions/housesActions'
 import { useDispatch, useSelector } from 'react-redux'
 import useSesion from 'hooks/useSesion'
