@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -57,10 +58,9 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm">
-                  {' '}
+                <NavLink to={'/team'} className="text-sm">
                   Team
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
