@@ -3,7 +3,7 @@ import { Col, Container, Image, Row } from 'react-bootstrap'
 
 import './loginReg.css'
 import backgroundImage from '../../../src/assets/img/png/Rectangle-610.png'
-import Login from 'components/sesion/Login'
+import LoginXX from 'components/sesion/LoginXX'
 import Register from 'components/register/Register'
 
 export const LoginReg = (props) => {
@@ -12,7 +12,7 @@ export const LoginReg = (props) => {
     <Container fluid>
       <Row>
         <Col className="d-flex align-items-center justify-content-center">
-          {action === 'login' ? <Login /> : <Register />}
+          {action === 'login' ? <LoginXX /> : <Register />}
         </Col>
         <Col className="d-none d-xl-block">
           <Image src={backgroundImage} fluid />
